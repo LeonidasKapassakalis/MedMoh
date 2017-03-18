@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load render_table from django_tables2 %}
+
+<!DOCTYPE html>
+<html lang="el_EL" >
+<head>
+</head>
+	{% if user.is_authenticated %}
+	<p>Welcone, {{ user.username }} </p>
+	{% else %}
+	<p>Welcome, new user. Please log in.</p>
+	{% endif %}
+
+<h1>{{ page_title }}  </h1>
+
+{% if main_url_leo %}
+	<li><a href={% url  main_url_leo  %}>Add</li>
+{% endif %}
+
+
+{% block title %}
+    {{ page_title }}
+{% endblock %}
+
+
+{% block content %}
+<html>
+    <html lang="el_EL" >
+    <h2> {{ form_name }} </h2>
+    <head>
+        <link rel="stylesheet" href="{% static 'django_tables2/themes/paleblue/css/screen.css' %}" />
+    </head>
+    <body>
+        {% render_table objects %}
+    </body>
+
+    <link rel="stylesheet" type="text/css" href="{% static "/admin/css/BasePlus.css" %}"/>
+    <p>
+    {% if param_action1_name %}
+        <a class="w3-btn w3-blue w3-border w3-round" href={{ param_action1 }}  >{{ param_action1_name}}</a>
+    {% endif %}
+    {% if param_action2_name %}
+        <a class="w3-btn w3-lime w3-border w3-round" href={{ param_action2 }}  >{{ param_action2_name}}</a>
+    {% endif %}
+    {% if param_action3_name %}
+        <a class="w3-btn w3-grey w3-border w3-round" href={{ param_action3 }}  >{{ param_action3_name}}</a>
+    {% endif %}
+    {% if param_action4_name %}
+        <a class="w3-btn w3-red w3-border w3-round" href={{ param_action4 }}  >{{ param_action4_name}}</a>
+    {% endif %}
+    </p>
+
+
+
+</html>
+{% endblock %}
