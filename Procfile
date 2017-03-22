@@ -1,1 +1,1 @@
-web: gunicorn DjgLeo001.wsgi --log-file -
+web: gunicorn MedMOH.wsgi --log-file -
