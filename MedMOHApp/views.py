@@ -106,16 +106,11 @@ def get_spec_user(request):
 
 from views_location import *
 from views_examination import *
-from views_bioexamination import *
-from views_bioexaminationdetail import *
 from views_medicine import *
-from views_operation import *
 from views_people import *
-from views_examname import *
 from views_for_clean import *
 from views_admin import *
 from views_param import *
-from views_schemadetail import *
 
 
 def someurl(request):

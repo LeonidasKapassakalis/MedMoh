@@ -62,7 +62,7 @@ class MedicineTable(tables.Table):
         sequence = ['dateof', 'doctorid', '...']
 
     def render_detail(self, record):
-        rev = reverse('DjgLeoApp001:detailmedicine', kwargs={'pk': str(record.pk)})
+        rev = reverse('MedMOHApp:detailmedicine', kwargs={'pk': str(record.pk)})
         return mark_safe('<a href=' + rev + u'><span style="color:red">Λεπτομέρειες</span></a>')
 
 # @login_required
@@ -79,7 +79,7 @@ def MedicineList(request, Patient):
                   {'objects': table, 'page_title': u'Φάρμακα',
                     'page_title': u'Φάρμακα για ' + p.name + ' ' + p.surname,
                     'form_name': u'Φάρμακα για ' + p.name + ' ' + p.surname,
-                    'param_action1': reverse('DjgLeoApp001:createmedicine'),
+                    'param_action1': reverse('MedMOHApp:createmedicine'),
                     'param_action1_name': 'Προσθήκη'})
 
 class MedicineDetailView(LoginRequiredMixin, UserPassesTestMixin, DetailView):

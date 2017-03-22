@@ -90,16 +90,10 @@ class BioExaminationDetailSingleTableView(django_tables2.SingleTableView):
 class FilteredTableView(ListView):
     model = BioExaminationDetail
 
-    def get_context_data(self, **kwargs):
-        context = super(FilteredTableView, self).get_context_data(**kwargs)
-        filter = BioExaminationDetail.filters.BookFilter(self.request.GET, queryset=self.object_list)
 
-        table = BioExaminationDetail.tables.BookTable(filter.qs)
-        django_tables2.RequestConfig(self.request, ).configure(table )
 
-        context['filter'] = filter
-        context['table'] = table
-        return context
+
+
 
 
 class FilterExListView(ListView):

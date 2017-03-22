@@ -44,7 +44,9 @@ INSTALLED_APPS = [
     'django_filters',
     'crispy_forms',
     'django_tables2',
-    'MedMOHApp',
+#    'MedMOHApp',
+    'MedMOHApp.apps.MedMOHAppConfig',
+
 ]
 
 MIDDLEWARE = [
@@ -67,7 +69,7 @@ ROOT_URLCONF = 'MedMOH.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'DjgLeoApp001/templates')]
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'MedMOHApp/templates')]
         ,
         'APP_DIRS': True,
         'OPTIONS': {

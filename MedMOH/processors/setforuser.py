@@ -16,7 +16,7 @@ class MyAdminSite(AdminSite):
 mysite = MyAdminSite()
 
 
-from DjgLeoApp001.models import SpecialUsers
+from MedMOHApp.models import SpecialUsers
 from django.contrib.auth.models import AnonymousUser
 
 def defadm(request):
@@ -33,8 +33,8 @@ def defadm(request):
             pl=[x.id for x in   u.peoples.all()]
             dl = [x.id for x in u.doctors.all()]
             return {'user': request.user, 'site_header': mysite.site_header, 'has_permission': mysite.has_permission(request),
-                   'site_url': mysite.site_url , 'title' : 'Λεωνίδας Exam App','people' : u.peopleid ,'altpeople': u.altpeopleid,
+                   'site_url': mysite.site_url , 'title' : 'Motor Oil Exam App','people' : u.peopleid ,'altpeople': u.altpeopleid,
                     'peoples': pl, 'doctors': dl}
         else:
             return {'user': request.user, 'site_header': mysite.site_header, 'has_permission': mysite.has_permission(request),
-                    'site_url': mysite.site_url , 'title' : 'Λεωνίδας Exam App'}
+                    'site_url': mysite.site_url , 'title' : 'Motor Oil Exam App'}

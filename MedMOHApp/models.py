@@ -8,10 +8,36 @@ from django_datatables_view.base_datatable_view import BaseDatatableView
 
 from django.core.urlresolvers import reverse
 
+class Company(models.Model):
+    id = models.AutoField
+    name = models.CharField(u'Εταιρία', max_length=50, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
+    def get_absolute_url(self):
+        return reverse('MedMOHApp:listCompany')
+
+class ExaminationCategory(models.Model):
+    id = models.AutoField
+    name = models.CharField(u'Κατηγορία Εξέτασης', max_length=50, unique=True)
+
+    def __unicode__(self):
+        return self.name
+
+    class Meta:
+        ordering = ('name',)
+
+    def get_absolute_url(self):
+        return reverse('MedMOHApp:listexaminationcategory')
+
 class Country(models.Model):
     id = models.AutoField
     name = models.CharField(u'Χώρα', max_length=50, unique=True)
-    abbr = models.CharField(u'Χώρα(2)', max_length=2, unique=True)
+    abbr = models.CharField(u'Χώρα(2)', max_length=10, unique=True)
     telephoneext = models.CharField(u'Τηλ', max_length=4) 
 
     def __unicode__(self):
@@ -21,38 +47,7 @@ class Country(models.Model):
         ordering = ('name',)
 
     def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listcountry')
-
-
-class Examschema(models.Model):
-    name = models.CharField(u'Σχήμα', unique=True, max_length=150)
-    sequence = models.CharField(u'Σειρά',max_length=50, blank=True, null=True)
-    notes = models.CharField(verbose_name=u'Σημειώσεις',max_length=150, blank=True, null=True)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name',)
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listexamschema')
-
-
-class ExamSchemaDetail(models.Model):
-    ExamSchema = models.ForeignKey('Examschema', verbose_name=u'Σχήμα')
-    ExamName = models.ForeignKey('Examname', verbose_name=u'Εξέταση')
-
-    def __unicode__(self):
-        return self.ExamSchema.name + ' ' +  self.ExamName.name
-
-    class Meta:
-        unique_together = (("ExamSchema", "ExamName"),)
-        ordering = ('ExamSchema','ExamName')
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listschemadetail')
-
+        return reverse('MedMOHApp:listcountry')
 
 class Locations(models.Model):
     id = models.AutoField
@@ -76,7 +71,7 @@ class Locations(models.Model):
         ordering = ('name',)
 
     def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listlocation')
+        return reverse('MedMOHApp:listlocation')
 
 
 class People(models.Model):
@@ -84,18 +79,14 @@ class People(models.Model):
     name = models.CharField(u'Όνομα',max_length=30)
     surname = models.CharField(u'Επώνυμο',max_length=50)
     dateofbirth = models.DateField(u'Ημερομηνία Γέννησης', blank=True, null=True)
-    nationality = models.CharField(u'Υπηκοότητα',max_length=20, blank=True, null=True)
-    countryid = models.ForeignKey(Country, verbose_name=u'Χώρα', db_column='CountryId')
     phone = models.CharField(u'Τηλέφωνο',max_length=60, blank=True, null=True)
     fax = models.CharField(u'FAX',max_length=60, blank=True, null=True)
     mobile = models.CharField(u'Κινητό',max_length=60, blank=True, null=True)
-    mail = models.CharField(u'Email', max_length=250, blank=True, null=True)
+    mail = models.EmailField(u'Email', max_length=250, blank=True, null=True)
     ispatient = models.NullBooleanField(u'Ασθενής',db_column='IsPatient')   
     isdoctor = models.NullBooleanField(u'Γιατρός',db_column='IsDoctor')   
-    canlogin = models.NullBooleanField('CanLogin')
-    accessonlyhisfile = models.NullBooleanField('Access Only His File')
     notes = models.CharField(verbose_name=u'Σημειώσεις', max_length=8192, blank=True, null=True)
-    photo = models.BinaryField('Photo', blank=True, null=True)
+    companyid = models.ForeignKey(Company, verbose_name=u'Εταιρία')
 
     class Meta:
         ordering = ('surname','name')
@@ -105,86 +96,24 @@ class People(models.Model):
 
     def get_absolute_url(self):
         if self.isdoctor:
-            return reverse('DjgLeoApp001:doctor_list')
+            return reverse('MedMOHApp:doctor_list')
         else:
-            return reverse('DjgLeoApp001:patient_list')
+            return reverse('MedMOHApp:patient_list')
 
-#max_digits=10, decimal_places=4,
-
-class Examname(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία', unique=True, max_length=100)
-    sname = models.CharField(verbose_name=u'Συντμηση', max_length=25)
-    minvalue = models.DecimalField(verbose_name=u'Ελάχιστο', default=0, max_digits=10, decimal_places=4 )
-    maxvalue = models.DecimalField(verbose_name=u'Μέγιστο',  default=0, max_digits=10, decimal_places=4)
-    comments = models.CharField(verbose_name=u'Σχόλια', max_length=250, blank=True, null=True)
-    RESULT_TYPES = (
-        (1, 'Αριθμητικό'),
-        (2, 'Κείμενο'),
-        (3, 'Αριθμητικό + Κείμενο'),
-        (4, 'Εκτενές Κείμενο'),
-        (5, 'Λογικό'),
-        (9, 'Άλλο'),
-    )
-    result_type = models.IntegerField(max_length=1, choices=RESULT_TYPES, verbose_name=u'Είδος Απάντησης')
-    bioexaminationcategory = models.ForeignKey('BioExaminationCategory', verbose_name=u'Κατηγορία', blank=True,null=True)
-    groupexam = models.ForeignKey('GroupExam', verbose_name=u'Ομάδα(Group)', blank=True, null=True)
-    mm = models.ForeignKey('mm', verbose_name=u'Mονάδα Mέτρησης(Min/Max)', blank=True, null=True)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name', 'sname')
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listexamname')
-
-
-class ExaminationCategory(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία',max_length=50, unique=True)
-    sname = models.CharField(verbose_name=u'Σύντμηση',max_length=15)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name', 'sname')
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listexamcategory')
-
-
-# First, define the Manager subclass.
-
-def get_filter_manager(*args, **kwargs):
-    class FilterManager(models.Manager):
-        "Custom manager filters standard query set with given args."
-        def get_query_set(self):
-            return super(FilterManager, self).get_query_set().filter(*args, **kwargs)
-    return FilterManager()
-
-##class Article(models.Model):
-##    ...
-##    objects = get_filter_manager(deleted=False, author__deleted=False)
-##    deleted_articles = get_filter_manager(deleted=True)
-
-class DahlBookManager(models.Manager):
-    def get_queryset(self):
-        return super(DahlBookManager,self).get_queryset().filter(peopleid='1')
-
-
-class Examination0(models.Model):
+class Examination(models.Model):
     id = models.AutoField
     peopleid = models.ForeignKey(People, verbose_name=u'Ασθενής')
     doctorid = models.ForeignKey(People, verbose_name=u'Γιατρός',limit_choices_to={'isdoctor': True} , related_name = 'Examination0Doctor')
-    categorid = models.ForeignKey(ExaminationCategory,verbose_name=u'Κατηγορία')
+    examinationcategorid = models.ForeignKey(ExaminationCategory,verbose_name=u'Κατηγορία')
     dateofexam = models.DateField(verbose_name=u'Ημερομηνία Εξέτασης')
+    dayoff = models.BooleanField(verbose_name=u'Άδεια')
+    dateoffstart = models.DateField(verbose_name=u'Άδεια από', blank=True, null=True)
+    dateoffend   = models.DateField(verbose_name=u'Άδεια έως', blank=True, null=True)
+    daysoffgiven = models.IntegerField(verbose_name=u'Ημέρες Άδειας')
+    treatment = models.CharField(verbose_name=u'Αγωγή', max_length=8192, blank=True, null=True)
+    diagnosis = models.CharField(verbose_name=u'Διάγνωση', max_length=8192, blank=True, null=True)
     notes   = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
     comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
-
-    objects = models.Manager() # The default manager.
-    dahl_objects = DahlBookManager() # The Dahl-specific manager.
-    leo_objects = get_filter_manager(peopleid=2)
 
     class Meta:
         ordering = ('-dateofexam',)
@@ -193,15 +122,12 @@ class Examination0(models.Model):
         return self.peopleid.surname + ' ' + self.peopleid.name
 
     def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listexam', kwargs={'Patient': self.peopleid.id})
+        return reverse('MedMOHApp:listexam', kwargs={'Patient': self.peopleid.id})
 
     def __unicode__(self):
         a=self.dateofexam
         return self.peopleid.surname + ' ' + self.peopleid.name +  ' ' +a.strftime('%d/%m/%Y') + ' + ' + self.notes[:100]
 
-
-class ZeroConfigurationDatatableView(BaseDatatableView):
-    model = Examname
 
 
 from django.contrib.auth.models import User
@@ -212,116 +138,8 @@ class SpecialUsers(models.Model):
     altpeopleid = models.ForeignKey(People, verbose_name='Alt.Άνθρωπος', related_name='SpecialUserAltPeople')
     peoples     = models.ManyToManyField(People, verbose_name = 'Άνθρωποι', related_name='SpecialUserAltPeoples')
     doctors     = models.ManyToManyField(People, limit_choices_to={'isdoctor': True}, verbose_name = 'Γιατροί', related_name='SpecialUserAltDoctors')
-    location    = models.ForeignKey(Locations, verbose_name='Τόπος')
     notes       = models.CharField(verbose_name=u'Σημειώσεις',max_length=100)
 
-
-class DoctorSpeciality(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία',max_length=50, unique=True)
-    sname = models.CharField(verbose_name=u'Σύντμηση',max_length=15)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name', 'sname')
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listdoctorspec')
-
-
-# OperationsCategory
-class OperationCategory(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία',max_length=50, unique=True)
-    sname = models.CharField(verbose_name=u'Σύντμηση',max_length=15)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name', 'sname')
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listoperationcategory')
-
-
-# OperationsExamination
-class Operations(models.Model):
-    peopleid = models.ForeignKey(People,verbose_name=u'Ασθενής')
-    doctorid = models.ForeignKey(People,verbose_name=u'Γιατρός', limit_choices_to={'isdoctor': True}, related_name='OperationDoctor')
-    categorid = models.ForeignKey(OperationCategory,verbose_name=u'Κατηγορία')
-    dateof = models.DateField(verbose_name=u'Ημερομηνία')
-    notes = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
-    comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listoperation', kwargs={'Patient': self.peopleid.id})
-
-    def __unicode__(self):
-        a = self.dateofexam
-        return self.peopleid.surname + ' ' + self.peopleid.name + ' ' + a.strftime('%d/%m/%Y') + ' + ' + self.notes[:100]
-
-    class Meta:
-        ordering = ('dateof',)
-
-
-# BioExaminationCategory
-class BioExaminationCategory(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία',max_length=50, unique=True)
-    sname = models.CharField(verbose_name=u'Σύντμηση',max_length=15)
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name', 'sname')
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listbioexamcategory')
-
-
-# BioExamination
-class BioExamination(models.Model):
-    peopleid = models.ForeignKey(People, verbose_name=u'Ασθενής')
-    doctorid = models.ForeignKey(People, verbose_name=u'Γιατρός', limit_choices_to={'isdoctor': True} , related_name = 'ExaminationBioDoctor')
-    categorid = models.ForeignKey(ExaminationCategory, verbose_name=u'Κατηγορία', related_name='BioExaminationCategory')
-    examsschema = models.ManyToManyField('Examschema', verbose_name = u'Σχήμα')
-    category = models.ManyToManyField(ExaminationCategory, verbose_name=u'Κατηγορίες', blank=True, related_name='BioExaminationCategories')
-    dateofexam = models.DateField(verbose_name=u'Ημερομηνία Εξέτασης')
-    notes   = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
-    comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listexambio', kwargs={'Patient': self.peopleid.id})
-
-    def __unicode__(self):
-        a=self.dateofexam
-        return self.peopleid.surname + ' ' + self.peopleid.name +  ' ' +a.strftime('%d/%m/%Y') + ' + ' + self.notes[:100]
-
-    def __str__(self):
-        a=self.dateofexam
-        return self.peopleid.surname + ' ' + self.peopleid.name +  ' ' +a.strftime('%d/%m/%Y') + ' + ' + self.notes[:100]
-
-    class Meta:
-        ordering = ('-dateofexam',)
-
-
-
-class BioExaminationDetail(models.Model):
-    BioExaminationId = models.ForeignKey(BioExamination, verbose_name='Αφορά')
-    examnameid = models.ForeignKey(Examname, verbose_name='Εξέταση')
-    value = models.FloatField('Τιμή', blank = True, null = True )
-    notes = models.CharField(verbose_name=u'Σημειώσεις',max_length=255, blank=True, null=True)
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listexambiodet', kwargs={'exampk': self.BioExaminationId.pk})
-
-    class Meta:
-        unique_together = (("BioExaminationId", "examnameid" ),)
-        ordering = ('BioExaminationId','examnameid','id')
-
-    def __unicode__(self):
-        return self.examnameid.name
 
 # MedicineCategory
 class MedicineCategory(models.Model):
@@ -336,7 +154,7 @@ class MedicineCategory(models.Model):
         ordering = ('name', 'sname')
 
     def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listmedicinecategory')
+        return reverse('MedMOHApp:listMedicineCategory')
 
 
 # Medicine
@@ -354,52 +172,8 @@ class Medicine(models.Model):
         ordering = ('-dateof',)
 
     def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listmedicine', kwargs={'Patient': self.peopleid.id})
+        return reverse('MedMOHApp:listmedicine', kwargs={'Patient': self.peopleid.id})
 
     def __unicode__(self):
         a=self.dateofexam
         return self.peopleid.surname + ' ' + self.peopleid.name +  ' ' +a.strftime('%d/%m/%Y') + ' + ' + self.notes[:100]
-
-
-class GroupExam(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία', max_length=50, unique=True)
-    sname = models.CharField(verbose_name=u'Σύντμηση', max_length=15)
-
-    def __unicode__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listgroupexam')
-
-    class Meta:
-        ordering = ('name',)
-
-
-class MMType(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία', max_length=50, unique=True)
-    sname = models.CharField(verbose_name=u'Σύντμηση', max_length=15)
-
-    def __unicode__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listmmtype')
-
-    class Meta:
-        ordering = ('name',)
-
-
-class MM(models.Model):
-    name = models.CharField(verbose_name=u'Ονομασία', max_length=50, unique = True)
-    sname = models.CharField(verbose_name=u'Σύντμηση', max_length=15)
-    mmtype = models.ForeignKey('MMType', verbose_name=u'Είδος', blank=True, null=True)
-
-    def __unicode__(self):
-        return self.name
-
-    def get_absolute_url(self):
-        return reverse('DjgLeoApp001:listmm')
-
-    class Meta:
-        ordering = ('name',)
-

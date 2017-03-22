@@ -27,8 +27,8 @@
 			<h2>Notes     : {{ object.notes }}</h2>
 	</ul>
 
-<p><a href={% url 'DjgLeoApp001:updateexambiodet' object.id %} type="button" class="btn btn-lg btn-warning">  Μεταβολή  </a>
-<a href={% url 'DjgLeoApp001:deleteexambiodet' object.id %} type="button" class="btn btn-lg btn-danger">  Διαγραφή  </a></p>
+<p><a href={% url 'MedMOHApp:updateexambiodet' object.id %} type="button" class="btn btn-lg btn-warning">  Μεταβολή  </a>
+<a href={% url 'MedMOHApp:deleteexambiodet' object.id %} type="button" class="btn btn-lg btn-danger">  Διαγραφή  </a></p>
 
 <link rel="stylesheet" type="text/css" href="{% static "/admin/css/BasePlus.css" %}"/>
 

@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.conf.urls import url, include
 from django.contrib import admin
-from DjgLeoApp001 import views
-from DjgLeoApp001 import models
-from DjgLeoApp001 import forms
+from MedMOHApp import views
+from MedMOHApp import models
+from MedMOHApp import forms
 
 #from django.contrib import admin
 from django.contrib.auth import views as auth_views
@@ -27,10 +27,6 @@ urlpatterns = [
     url(r'^menu/', views.NewMenu),
     url(r'^menu1/', views.NewMenu1),
     url(r'^MedMOHApp/', include('MedMOHApp.urls')),
-    url(r'^contact999/$',views.ZeroConfigurationDatatableView.as_view(), name='contact999'),
-    url(r'^contact998/$',views.ZeroConfigurationDatatableView0.as_view(), name='contact998'),
-    url(r'^multiexam/$', views.MultiExam, name='MultiExamForm'),
-    url(r'^multiexam0/$', views.MultiExam0, name='MultiExamForm0'),
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', views.login, name='login'),
     url(r'^logout/$', views.logout, name='logout'),

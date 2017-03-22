@@ -21,59 +21,26 @@ from .models import People
 class PeopleAdmin(admin.ModelAdmin):
     list_display = ('surname', 'name', 'mail')
     search_fields = ('surname', 'name')
-    list_filter = ('surname', 'countryid')
+    list_filter = ('surname',)
 #Many to Many    filter_horizontal = ('countryid',)
     ordering = ('surname','-name',)
-    fields = ('surname', 'name', 'mail' , 'countryid')
+    fields = ('surname', 'name', 'mail' ,)
 #Many to Many    raw_id_fields = ('countryid',)
 
 admin.site.register(People,PeopleAdmin)
 
-from .models import Examination0
-class Examination0Admin(admin.ModelAdmin):
+from .models import Examination
+class ExaminationAdmin(admin.ModelAdmin):
     list_display = ('surname', 'dateofexam','notes')
     search_fields = ('dateofexam',)
     list_filter = ('dateofexam',)
-admin.site.register(Examination0,Examination0Admin)
+admin.site.register(Examination,ExaminationAdmin)
 
-from .models import Examname
-admin.site.register(Examname)
+
 
 from .models import Locations
 admin.site.register(Locations)
 
-from .models import MM
-admin.site.register(MM)
-
-from .models import MMType
-admin.site.register(MMType)
-
-from .models import Examschema
-admin.site.register(Examschema)
-
-from .models import ExamSchemaDetail
-admin.site.register(ExamSchemaDetail)
-
-from .models import GroupExam
-admin.site.register(GroupExam)
-
-from .models import DoctorSpeciality
-admin.site.register(DoctorSpeciality)
-
-from .models import OperationCategory
-admin.site.register(OperationCategory)
-
-from .models import Operations
-admin.site.register(Operations)
-
-from .models import BioExaminationCategory
-admin.site.register(BioExaminationCategory)
-
-from .models import BioExamination
-admin.site.register(BioExamination)
-
-from .models import BioExaminationDetail
-admin.site.register(BioExaminationDetail)
 
 from .models import MedicineCategory
 admin.site.register(MedicineCategory)

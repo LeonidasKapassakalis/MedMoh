@@ -50,14 +50,10 @@ from django.shortcuts import render
 def people0(request):
     return render(request, 'General/Generic_Table_view.html' , {'objects': People.objects.all(), 'add_url_leo': 'locationcreate' } )
 
-from models import Examination0
+from models import Examination
 def examination00(request):
-    return render(request, 'General/Generic_Table_view.html', {'objects': Examination0.objects.all()})
+    return render(request, 'General/Generic_Table_view.html', {'objects': Examination.objects.all()})
 
-
-from models import Examname
-def people1(request):
-    return render(request, 'General/Generic_Table_view.html', {'objects': Examname.objects.all()})
 
 
 def people10(request):
@@ -145,11 +141,11 @@ def contact(request):
 
 
 #Examination0
-from models import Examination0
+from models import Examination
 
 def ExaminationsListPer000(request):
-    queryset  = Examination0.objects.all()
-    table = Examination0(queryset)
+    queryset  = Examination.objects.all()
+    table = Examination(queryset)
     RequestConfig(request).configure(table)
     return render(request, 'Generic/Generic_Table_view.html', {'object_list': table})
 
@@ -162,13 +158,13 @@ from django.shortcuts import redirect
 class ExaminationsList(LoginRequiredMixin,UserPassesTestMixin,ListView):
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
-    model = Examination0
+    model = Examination
 
     def test_func(self):
         return True
 
 class ExaminationsList0(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,ListView):
-    model = Examination0
+    model = Examination
 
     def __init__(self, *args, **kwargs):
         super(ExaminationsList, self).__init__(*args, **kwargs)
@@ -192,7 +188,7 @@ class ExaminationsListPer(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidget
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
-    model = Examination0
+    model = Examination
 ##    template_name = 'examination_list_per_person.html'
 
 #    queryset  = Examination0.dahl_objects.all()
@@ -201,7 +197,7 @@ class ExaminationsListPer(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidget
     def get_queryset(self):
         self.id = get_object_or_404(People,id=self.args[0])
         self.name = get_object_or_404(People,id=self.args[0])
-        return Examination0.objects.filter(peopleid=self.id)
+        return Examination.objects.filter(peopleid=self.id)
 
     def get_context_data(self, **kwargs):
 # Call the base implementation first to get a context
@@ -219,12 +215,12 @@ class ExaminationsListPerDoctor(LoginRequiredMixin,UserPassesTestMixin,ModelForm
     login_url = '/login/'
     redirect_field_name = 'redirect_to'
 
-    model = Examination0
+    model = Examination
 ##    template_name = 'examination_list_per_person.html'
     def get_queryset(self):
         self.id = get_object_or_404(People,id=self.args[0])
         self.name = get_object_or_404(People,id=self.args[0])
-        return Examination0.objects.filter(doctorid=self.id)
+        return Examination.objects.filter(doctorid=self.id)
 
     def get_context_data(self, **kwargs):
         context = super(ExaminationsListPerDoctor, self).get_context_data(**kwargs)
@@ -237,7 +233,7 @@ class ExaminationsListPerDoctor(LoginRequiredMixin,UserPassesTestMixin,ModelForm
 
 
 class ExaminationsListPerDoctorPatient(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,ListView):
-    model = Examination0
+    model = Examination
 ##    template_name = 'examination_list_per_person.html'
     def get_queryset(self):
         self.did = get_object_or_404(People,id=self.args[0])
@@ -245,7 +241,7 @@ class ExaminationsListPerDoctorPatient(LoginRequiredMixin,UserPassesTestMixin,Mo
         self.pid = get_object_or_404(People,id=self.args[1])
         self.pname = get_object_or_404(People,id=self.args[1])
 
-        return Examination0.objects.filter(doctorid=self.did,peopleid=self.pid)
+        return Examination.objects.filter(doctorid=self.did,peopleid=self.pid)
 
     def get_context_data(self, **kwargs):
         context = super(ExaminationsListPerDoctorPatient, self).get_context_data(**kwargs)
@@ -260,158 +256,16 @@ class ExaminationsListPerDoctorPatient(LoginRequiredMixin,UserPassesTestMixin,Mo
 from models import ExaminationCategory
 
 class ExaminationsListPerCategory(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,ListView):
-    model = Examination0
+    model = Examination
     def get_queryset(self):
         self.id = get_object_or_404(ExaminationCategory,id=self.args[0])
-        return Examination0.objects.filter(categorid=self.id)
+        return Examination.objects.filter(categorid=self.id)
 
     def test_func(self):
         return True
 
 
 from django.views.generic.detail import DetailView
-
-# class ExaminationDetail(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,DetailView):
-#     model = Examination0
-#
-#     def test_func(self):
-#         return True
-
-
-# class ExaminationCreare(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,CreateView):
-#     model = Examination0
-#     fields = ['peopleid','doctorid','categorid','dateofexam','notes','comments']
-#     template_name_suffix = '_create_form'
-#     success_url = '/examinations/'
-#     widgets = {
-#         'dateofexam': DateWidget(attrs={'id': "id_dateofexam"}, bootstrap_version=3),
-#         'notes': forms.Textarea(attrs={'cols': 100, 'rows': 10}),
-#         'comments': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
-#         }
-#
-#     def test_func(self):
-#         return True
-
-
-# class ExaminationUpdate(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,UpdateView):
-#     model = Examination0
-#     fields = ['peopleid','doctorid','categorid','dateofexam','notes','comments']
-#     readonly_fields = ('peopleid','categorid','dateofexam')
-#     template_name_suffix = '_update_form'
-#     success_url = '/examinations/'
-#     widgets = {
-#         'dateofexam': DateWidget(attrs={'id': "id_dateofexam"}, bootstrap_version=3),
-#         'notes': forms.Textarea(attrs={'cols': 100, 'rows': 10, 'readonly' : True}),
-#         'comments': forms.Textarea(attrs={'cols': 100, 'rows': 5, 'readonly' : True}),
-#         }
-#
-#     def test_func(self):
-#         return True
-
-
-# class ExaminationDelete(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,DeleteView):
-#     model = Examination0
-#     fields = ['peopleid','doctorid','categorid','dateofexam','notes','comments']
-#     success_url = '/examinations/'
-#
-#     def test_func(self):
-#         return True
-#
-#
-# class ExaminationTable(tables.Table):
-#     detail = tables.LinkColumn('item_detail', args=[('pk')], orderable=False, empty_values=[''])
-#     edit = tables.LinkColumn('item_edit', args=[('pk')],orderable=False,empty_values=[''])
-# #    delete = tables.LinkColumn('item_delete', args=[('pk')],orderable=False,empty_values=[''])
-#     class Meta:
-#         model = Examination0
-#         row_attrs = {
-#             'data-id': lambda record: record.pk
-#         }
-#         attrs = {'class': 'paleblue'}
-#         exclude = ['id','nationality','idoncontry','ispatient','notes','isdoctor','canlogin','accessonlyhisfile','photo','notes']
-# #        fields
-#         sequence = ['dateofexam','...']
-#
-#     def render_edit(self, record):
-#         return mark_safe('<a href=/examinationupd/' + str(record.pk) + '/><span style="color:blue">Edit</span></a>')
-#
-#     def render_delete(self, record):
-#         return mark_safe('<a href=/examinationdel/' + str(record.pk) + '/><span style="color:red">Delete</span></a>')
-#
-#     def render_detail(self, record):
-#         return mark_safe('<a href=/examinationdet/' + str(record.pk) + '/><span style="color:green">View</span></a></a>')
-#
-#
-# def examination_list(request):
-#     table = ExaminationTable(Examination0.objects.all())
-#     RequestConfig(request).configure(table)
-#     return render(request, 'General/Generic_Table_view.html',
-#                   {'objects': table,
-#                     'page_title': u'Εξετάσεις',
-#                     'form_name' : u'Εξετάσεις',
-#                     'param_action1': reverse('DjgLeoApp001:createexambio'),
-#                     'param_action1_name': 'Προσθήκη'})
-
-#Crispy
-from crispy_forms.helper import FormHelper
-from crispy_forms.layout import HTML
-from crispy_forms.layout import Layout, Fieldset, ButtonHolder, Submit, Div, MultiField
-
-class ExampleForm0(LoginRequiredMixin,UserPassesTestMixin,ModelFormWidgetMixin,CreateView):
-    model = People
-    fields = ['name', 'surname', 'notes', 'mail', 'dateofbirth', 'nationality', 'countryid',
-              'phone', 'fax', 'mail', 'ispatient', 'isdoctor', 'canlogin',
-              'accessonlyhisfile', 'notes']
-    success_url = '/examinations'
-
-    def __init__(self, *args, **kwargs):
-        super(ExampleForm0, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_id = 'id-exampleForm0'
-        self.helper.form_class = 'blueForms'
-        self.helper.form_method = 'get'
-        self.helper.form_action = '/examinations'
-
-#        self.template = 'example_form0.html'
-
-#        self.helper.form_class = 'form-inline'
-#        self.helper.field_template = 'bootstrap3/layout/inline_field.html'
-#        self.helper.field_template = 'bootstrap3/layout/multifield.html'
-
-#        self.helper.form_class = 'form-horizontal'
-#        self.helper.label_class = 'col-lg-2'
-#        self.helper.field_class = 'col-lg-8'
-
-        self.helper.layout = Layout(
-            HTML("{% extends 'base.html' %}"),
-            Fieldset(
-                    'Please mr {{ user.username }}',
-                    'name',
-                    'surname',
-                    'dateofbirth',
-                    'countryid',
-                    'nationality'
-            ),
-            Fieldset(
-            'Contact Information',
-            'mail',
-            'phone',
-            'fax'
-            )
-        )
-
-        self.helper.add_input(Submit('submit', 'Submit'))
-
-#        self.helper.layout.append(HTML("<p>whatever</p>"))
-
-
-    def get_context_data(self, **kwargs):
-        context = super(ExampleForm0, self).get_context_data(**kwargs)
-        context['helper'] = self.helper
-        return context
-
-    def test_func(self):
-        return True
 
 
 from django.shortcuts import render
@@ -485,7 +339,7 @@ class ZeroConfigurationDatatableView(DemoMixin, DatatableView):
     method on your view that returns a queryset with the appropriate call to ``select_related()``.
     """
 
-    model = Examination0
+    model = Examination
 
     implementation = u"""
     class ZeroConfigurationDatatableView(DatatableView):
@@ -493,93 +347,6 @@ class ZeroConfigurationDatatableView(DemoMixin, DatatableView):
     """
 
 # Column configurations
-class ZeroConfigurationDatatableView0(DemoMixin, DatatableView):
-    """
-    If no columns are specified by the view's ``Datatable`` configuration object (or no
-    ``datatable_class`` is given at all), ``DatatableView`` will use all of the model's local
-    fields.  Note that this does not include reverse relationships, many-to-many fields (even if the
-    ``ManyToManyField`` is defined on the model directly), nor the special ``pk`` field, but DOES
-    include ``ForeignKey`` fields defined directly on the model.
-
-    Note that fields will automatically use their ``verbose_name`` for the frontend table headers.
-
-    WARNING:
-    When no columns list is explicitly given, the table will end up trying to show foreign keys as
-    columns, generating at least one extra query per displayed row.  Implement a ``get_queryset()``
-    method on your view that returns a queryset with the appropriate call to ``select_related()``.
-    """
-
-    model = Examname
-
-    implementation = u"""
-    class ZeroConfigurationDatatableView(DatatableView):
-        model = Examname
-    """
-
-# ###Locations>
-#
-# class LocationTable(tables.Table):
-#     edit = tables.LinkColumn('item_edit', args=[('pk')],orderable=False,empty_values=[''])
-#     detail = tables.LinkColumn('item_detail', args=[('pk')],orderable=False,empty_values=[''])
-#     delete = tables.LinkColumn('item_delete', args=[('pk')],orderable=False,empty_values=[''])
-#     class Meta:
-#         model = Locations
-#         row_attrs = {
-#             'data-id': lambda record: record.pk
-#         }
-#         attrs = {'class': 'paleblue'}
-#         exclude = ['phone', 'hospital', 'medicalcenter', 'eopyy', 'contact']
-# #        fields
-# #        sequence = ['name','surname','countryid','phone','...']
-#
-#     def render_edit(self,record):
-#         return mark_safe('<a href=/locationupd/'+str(record.pk)+'/><span style="color:blue">Edit</span></a>')
-#
-#     def render_delete(self,record):
-#         return mark_safe('<a href=/locatiodel/'+str(record.pk)+'/><span style="color:red">Delete</span></a>')
-#
-#     def render_detail(self,record):
-#         return mark_safe('<a href=/location/'+str(record.pk)+'/><span style="color:green">Det.◙</span></a></a>')
-#
-# #✔
-# #✘
-# #☺☻▓▒■□▪▫▲►▼◄◊○◌●◘▬◙☼⌂
-# #< span class ="false" > ✘ < / span >
-# #< span class ="false" > ✘ < / span >
-# #<span style="color:blue">
-#
-#
-# def locations_list(request):
-#     table = LocationTable(Locations.objects.all())
-#     RequestConfig(request).configure(table)
-#     return render(request, 'people.html', {'people': table, 'add_url_leo':'locationcreate', 'page_title':u'Τοποθεσία'})
-#
-# class LocationDetailView(DetailView):
-#     model = Locations
-#
-#     def get_context_data(self, **kwargs):
-#         context = super(LocationDetailView, self).get_context_data(**kwargs)
-#         return context
-#
-# class LocationCreare(CreateView):
-#     model = Locations
-#     fields =  ['name', 'address', 'phone', 'mail', 'tk', 'text', 'hospital', 'medicalcenter', 'eopyy', 'contact', 'countryid','peoples']
-#     template_name_suffix = '_create_form'
-#
-# class LocationUpdate(UpdateView):
-#     model = Locations
-#     fields =  ['name', 'address', 'phone', 'mail', 'tk', 'text', 'hospital', 'medicalcenter', 'eopyy', 'contact', 'countryid','peoples']
-#     template_name_suffix = '_update_form'
-#     success_url = '/locations/'
-#
-# class LocationDelete(DeleteView):
-#     model = Locations
-#     fields = ['name','surname','notes','mail']
-#     success_url = '/locations/'
-
-###Locations<
-
-###MultiExamForm>
 
 from django.contrib.admin.widgets import AdminDateWidget
 from django.contrib.admin.widgets import AdminTimeWidget
@@ -678,7 +445,7 @@ class ExaminationsListPerTable(tables.Table):
     edit = tables.LinkColumn('item_edit', args=[('pk')],orderable=False,empty_values=[''])
     delete = tables.LinkColumn('item_delete', args=[('pk')],orderable=False,empty_values=[''])
     class Meta:
-        model = Examination0
+        model = Examination
         row_attrs = {
             'data-id': lambda record: record.pk
         }
@@ -688,18 +455,18 @@ class ExaminationsListPerTable(tables.Table):
 #        sequence = ['dateofexam','...']
 
     def render_edit(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/examinationupd/' + str(record.pk) + '/><span style="color:blue">Edit</span></a>')
+        return mark_safe('<a href=/MedMOHApp/examinationupd/' + str(record.pk) + '/><span style="color:blue">Edit</span></a>')
 
     def render_delete(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/examinationdel/' + str(record.pk) + '/><span style="color:red">Delete</span></a>')
+        return mark_safe('<a href=/MedMOHApp/examinationdel/' + str(record.pk) + '/><span style="color:red">Delete</span></a>')
 
     def render_detail(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/examinationdet/' + str(record.pk) + '/><span style="color:green">View</span></a></a>')
+        return mark_safe('<a href=/MedMOHApp/examinationdet/' + str(record.pk) + '/><span style="color:green">View</span></a></a>')
 
 
 def ExaminationsListPer_Table(request,pk):
     id = get_object_or_404(People, id=pk)
-    table = ExaminationsListPerTable(Examination0.objects.filter(peopleid=id))
+    table = ExaminationsListPerTable(Examination.objects.filter(peopleid=id))
     RequestConfig(request).configure(table)
     return render(request, 'people.html', {'people': table})
 
@@ -717,7 +484,7 @@ def examination_list_per(request,pk):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
     id = get_object_or_404(People, id=pk)
-    table = ExaminationTable(Examination0.objects.filter(peopleid=pk))
+    table = ExaminationTable(Examination.objects.filter(peopleid=pk))
     RequestConfig(request).configure(table)
     return render(request, 'people.html', {'people': table, 'page_title' : 'Εξετάσεις', 'add_url_leo': 'examinationcreate' })
 

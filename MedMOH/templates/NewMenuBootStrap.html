@@ -43,9 +43,9 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-		    <li><a href="{% url "DjgLeoApp001:patient_list" %}">Ασθενείς</a></li>
-		    <li><a href="{% url "DjgLeoApp001:doctor_list" %}">Γιατροί</a></li>
-
+		    <li><a href="{% url "MedMOHApp:patient_list" %}">Ασθενείς</a></li>
+		    <li><a href="{% url "MedMOHApp:doctor_list" %}">Γιατροί</a></li>
+            <li><a href="{% url "MedMOHApp:testfa" %}">Αναζήτηση</a></li>
 
 {#        <li class="dropdown">#}
 {#          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Άτομα<span class="caret"></span></a>#}
@@ -77,30 +77,21 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Παραμετρικά<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="{% url "DjgLeoApp001:listlocation" %}">Τοποθεσίες</a></li>
-            <li><a href="{% url "DjgLeoApp001:listexamname" %}">Εξετάσεις</a></li>
-            <li><a href="{% url "DjgLeoApp001:listmm" %}">Μονάδες Μέτρησης</a></li>
-            <li><a href="{% url "DjgLeoApp001:listmmtype" %}">Είδος Μονάδας Μέτρησης</a></li>
-            <li><a href="{% url "DjgLeoApp001:listgroupexam" %}">Ομάδα Εξετάσεων</a></li>
-            <li><a href="{% url "DjgLeoApp001:listmedicinecategory" %}">Κατηγορία Φαρμάκων</a></li>
-            <li><a href="{% url "DjgLeoApp001:listbioexaminationcategory" %}">Κατηγορία Εξετάσεων</a></li>
-            <li><a href="{% url "DjgLeoApp001:listoperationcategory" %}">Κατηγορία Επεμβάσεων</a></li>
-            <li><a href="{% url "DjgLeoApp001:listdoctorspeciality" %}">Ειδικότητες Γιατρών</a></li>
-            <li><a href="{% url "DjgLeoApp001:listexamschema" %}">Σχήμα Εξετάσεων</a></li>
-            <li><a href="{% url "DjgLeoApp001:listschemadetail" %}">Αναλυτικό Σχήμα Εξετάσεων</a></li>
-            <li><a href="{% url "DjgLeoApp001:listcountry" %}">Χώρες</a></li>
+            <li><a href="{% url "MedMOHApp:listlocation" %}">Τοποθεσίες</a></li>
+            <li><a href="{% url "MedMOHApp:listmedicinecategory" %}">Κατηγορία Φαρμάκων</a></li>
+            <li><a href="{% url "MedMOHApp:listexaminationcategory" %}">Κατηγορία Εξέτασης</a></li>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Άλλα<span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li role="separator" class="divider"></li>
-            <li><a href="{% url "DjgLeoApp001:create" %}">People Create</a></li>
+            <li><a href="{% url "MedMOHApp:create" %}">People Create</a></li>
             <li role="separator" class="divider"></li>
-		    <li><a href="{% url "DjgLeoApp001:list" %}">People List</a></li>
+		    <li><a href="{% url "MedMOHApp:list" %}">People List</a></li>
             <li role="separator" class="divider"></li>
-		    <li><a href="{% url "DjgLeoApp001:patient_list" %}">Patient List</a></li>
-		    <li><a href="{% url "DjgLeoApp001:doctor_list" %}">Doctor List</a></li>
+		    <li><a href="{% url "MedMOHApp:patient_list" %}">Patient List</a></li>
+		    <li><a href="{% url "MedMOHApp:doctor_list" %}">Doctor List</a></li>
           </ul>
         </li>
       </ul>

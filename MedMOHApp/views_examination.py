@@ -26,9 +26,12 @@ from .views import get_spec_user
 
 ########################################################################################################
 
+#'peopleid','doctorid'.'examinationcategorid','dateofexam','dayoff','dateoffstart','dateoffend','daysoffgiven','treatment','diagnosis','notes','comments''
+
+
 ########################################################################################################
 # Examination
-from .models import Examination0
+from .models import Examination
 from .models import People
 
 class ExaminationForm(forms.ModelForm):
@@ -37,12 +40,18 @@ class ExaminationForm(forms.ModelForm):
         super(self.__class__, self).__init__(*args, **kwargs)
 
     class Meta:
-        model = Examination0
-        fields = ['peopleid', 'doctorid', 'categorid', 'dateofexam', 'notes', 'comments']
+        model = Examination
+        fields = ['peopleid', 'doctorid','examinationcategorid', 'dateofexam',
+                  'treatment', 'diagnosis', 'notes', 'comments',
+                  'dayoff', 'dateoffstart', 'dateoffend','daysoffgiven']
         widgets = {
             'dateofexam': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
-            'notes': forms.Textarea(attrs={'cols': 100, 'rows': 10}),
-            'comments': forms.Textarea(attrs={'cols': 100, 'rows': 10})
+            'dateoffstart': DateWidget(attrs={'id': "id_dateofstart"}, bootstrap_version=3),
+            'dateoffend': DateWidget(attrs={'id': "id_dateofend"}, bootstrap_version=3),
+            'diagnosis': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
+            'treatment': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
+            'notes': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
+            'comments': forms.Textarea(attrs={'cols': 100, 'rows': 5})
             }
 
     def clean_peopleid(self):
@@ -64,7 +73,7 @@ class ExaminationTable(tables.Table):
     detail = tables.LinkColumn('item_detail', args=[('pk')], orderable=False, empty_values=[''])
 
     class Meta:
-        model = Examination0
+        model = Examination
         row_attrs = {
             'data-id': lambda record: record.pk
         }
@@ -73,14 +82,14 @@ class ExaminationTable(tables.Table):
         sequence = ['dateofexam', 'doctorid',  '...']
 
     def render_detail(self, record):
-        rev = reverse('DjgLeoApp001:detailexam', kwargs={'pk': str(record.pk)})
+        rev = reverse('MedMOHApp:detailexam', kwargs={'pk': str(record.pk)})
         return mark_safe('<a href=' + rev + u'><span style="color:red">Λεπτομέρειες</span></a>')
 
 
 def ExaminationList(request, Patient):
     if not request.user.is_authenticated:
         return redirect('%s?next=%s' % (settings.LOGIN_URL, request.path))
-    table = ExaminationTable(Examination0.objects.all().filter(peopleid=Patient))
+    table = ExaminationTable(Examination.objects.all().filter(peopleid=Patient))
     request.session['patient_id'] = Patient
     RequestConfig(request, paginate={'per_page': 25}).configure(table)
     p = People.objects.get(pk=Patient)
@@ -88,12 +97,12 @@ def ExaminationList(request, Patient):
                   {'objects': table,
                    'page_title': u'Εξετάσεις για ' + p.name + ' ' + p.surname,
                    'form_name': u'Εξετάσεις για ' + p.name + ' ' + p.surname,
-                   'param_action1': reverse('DjgLeoApp001:createexam'),
+                   'param_action1': reverse('MedMOHApp:createexam'),
                     'param_action1_name': 'Προσθήκη'})
 
 
 class ExaminationCreare(LoginRequiredMixin, UserPassesTestMixin,CreateView):
-    model = Examination0
+    model = Examination
     form_class = ExaminationForm
     template_name = 'General/General_cu_form.html'
 
@@ -110,13 +119,13 @@ class ExaminationCreare(LoginRequiredMixin, UserPassesTestMixin,CreateView):
         return True
 
 class ExaminationDetailView(LoginRequiredMixin, UserPassesTestMixin, ModelFormWidgetMixin, DetailView):
-    model = Examination0
+    model = Examination
 
     def test_func(self):
         return True
 
 class ExaminationUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
-    model = Examination0
+    model = Examination
     form_class = ExaminationForm
     template_name = 'General/General_cu_form.html'
 
@@ -130,7 +139,7 @@ class ExaminationUpdate(LoginRequiredMixin,UserPassesTestMixin,UpdateView):
 
 
 class ExaminationDelete(LoginRequiredMixin, UserPassesTestMixin, ModelFormWidgetMixin, DeleteView):
-    model = Examination0
+    model = Examination
 
     def test_func(self):
         return True

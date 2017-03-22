@@ -50,7 +50,7 @@ class LocationsTable(tables.Table):
         sequence = ['name', 'tk', '...']
 
     def render_detail(self, record):
-        rev = reverse('DjgLeoApp001:detaillocation', kwargs={'pk': str(record.pk)})
+        rev = reverse('MedMOHApp:detaillocation', kwargs={'pk': str(record.pk)})
         return mark_safe('<a href=' + rev + u'><span style="color:red">Λεπτομέρειες</span></a>')
 
 
@@ -64,7 +64,7 @@ def LocationList(request):
                   {'objects': table, 'page_title': u'Τοποθεσίες',
                     'page_title': u'Τοποθεσίες',
                     'form_name': u'Τοποθεσίες',
-                    'param_action1': reverse('DjgLeoApp001:createlocation'),
+                    'param_action1': reverse('MedMOHApp:createlocation'),
                     'param_action1_name': 'Προσθήκη'})
 
 

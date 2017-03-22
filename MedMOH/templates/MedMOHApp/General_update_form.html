@@ -10,9 +10,9 @@
 <form action="" method="post">{% csrf_token %}
 
 <link rel="stylesheet" type="text/css" href="{% static "/admin/css/BasePlus.css" %}"/>
-<a class="w3-btn w3-white w3-border w3-round" href={% url 'DjgLeoApp001:examinationsper'  people.id %}>Exams</a>
+<a class="w3-btn w3-white w3-border w3-round" href={% url 'MedMOHApp:examinationsper'  people.id %}>Exams</a>
 {% if people.isdoctor %}
-<a class="w3-btn w3-white w3-border w3-round" href={% url 'DjgLeoApp001:examinationsListPerDoctor'  people.id %}>Ordered Exams</a>
+<a class="w3-btn w3-white w3-border w3-round" href={% url 'MedMOHApp:examinationsListPerDoctor'  people.id %}>Ordered Exams</a>
 {% endif %}
 
 <script src="{% static 'bootstrap-3.1.1/js/jquery.js' %}"></script>
@@ -29,17 +29,17 @@
 </table> 	
 <input type="submit" value="Update" />
 <!--	<button type="reset" value="Reset">Reset</button> --!>
-<!-- <li><a href={% url 'DjgLeoApp001:update'  people.id %} >Delete/li> --!>
-<!-- <li><a href={% url 'DjgLeoApp001:examinationsper'  people.id %}>Exams/li> --!>
+<!-- <li><a href={% url 'MedMOHApp:update'  people.id %} >Delete/li> --!>
+<!-- <li><a href={% url 'MedMOHApp:examinationsper'  people.id %}>Exams/li> --!>
 <!-- {% if people.isdoctor %}--!>
-<!-- <p><a href={% url 'DjgLeoApp001:examinationsListPerDoctor'  people.id %} class="cta">Ordered Exams/p>--!>
+<!-- <p><a href={% url 'MedMOHApp:examinationsListPerDoctor'  people.id %} class="cta">Ordered Exams/p>--!>
 <!-- {% endif %}	--!>
 
 <link rel="stylesheet" type="text/css" href="{% static "/admin/css/BasePlus.css" %}"/>
-<a class="w3-btn w3-red w3-border" href={% url 'DjgLeoApp001:delete'  people.id %}>Delete</a>
-<!--<a class="w3-btn w3-white w3-border" href={% url 'DjgLeoApp001:examinationsper'  people.id %}>Exams</a>--!>
+<a class="w3-btn w3-red w3-border" href={% url 'MedMOHApp:delete'  people.id %}>Delete</a>
+<!--<a class="w3-btn w3-white w3-border" href={% url 'MedMOHApp:examinationsper'  people.id %}>Exams</a>--!>
 <!--{% if people.isdoctor %}--!>
-<!--<a class="w3-btn w3-white w3-border" href={% url 'DjgLeoApp001:examinationsListPerDoctor'  people.id %}>Ordered Exams</a>--!>
+<!--<a class="w3-btn w3-white w3-border" href={% url 'MedMOHApp:examinationsListPerDoctor'  people.id %}>Ordered Exams</a>--!>
 <!--{% endif %}--!>
 
 

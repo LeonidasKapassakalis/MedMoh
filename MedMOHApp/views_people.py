@@ -41,11 +41,11 @@ class PeopleForm(forms.ModelForm):
 
     class Meta:
         model = People
-        fields = ['name', 'surname', 'dateofbirth', 'nationality', 'countryid', 'phone', 'fax', 'mobile', 'mail' \
-                  ,'ispatient','isdoctor','canlogin','accessonlyhisfile','notes']
+        fields = ['name', 'surname', 'dateofbirth', 'phone', 'mobile', 'mail' ,'companyid'
+                  ,'ispatient','isdoctor','notes']
         widgets = {
             'dateofbirth': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
-            'notes': forms.Textarea(attrs={'cols': 100, 'rows': 10})
+            'notes': forms.Textarea(attrs={'cols': 100, 'rows': 5})
             }
 
 
@@ -133,7 +133,7 @@ def patient_list(request):
                   {'objects': table,
                    'page_title': u'Ασθενείς',
                    'form_name': u'Ασθενείς',
-                   'param_action1': reverse('DjgLeoApp001:create'),
+                   'param_action1': reverse('MedMOHApp:create'),
                    'param_action1_name': 'Προσθήκη'})
 
 
@@ -148,11 +148,11 @@ class PeopleTable(tables.Table):
             'data-id': lambda record: record.pk
         }
         attrs = {'class': 'paleblue'}
-        exclude = ['nationality','id','idoncontry','ispatient','isdoctor','canlogin','accessonlyhisfile','photo','notes']
-        sequence = ['selection','name','surname','countryid','phone','...']
+        exclude = ['id','ispatient','isdoctor','canlogin','accessonlyhisfile','notes']
+        sequence = ['selection','name','surname','phone','...']
 
     def render_detail(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/detail/' + str(record.pk) + '/><span style="color:green">Λεπτομέριες</span></a></a>')
+        return mark_safe('<a href=/MedMOHApp/detail/' + str(record.pk) + '/><span style="color:green">Λεπτομέριες</span></a></a>')
 
 
     def render_detail1(self, record):
@@ -170,7 +170,7 @@ def person_list(request):
                   {'objects': table,
                    'page_title': u'Άτομα',
                    'form_name': u'Άτομα',
-                   'param_action1': reverse('DjgLeoApp001:create'),
+                   'param_action1': reverse('MedMOHApp:create'),
                    'param_action1_name': 'Προσθήκη'})
 
 
@@ -183,14 +183,14 @@ class DoctorListTable(tables.Table):
             'data-id': lambda record: record.pk
         }
         attrs = {'class': 'paleblue'}
-        exclude = ['dateofbirth', 'nationality', 'countryid', 'ispatient', 'isdoctor', 'canlogin', 'accessonlyhisfile', 'notes' ,'id', 'photo']
+        exclude = ['dateofbirth', 'nationality', 'ispatient', 'isdoctor', 'canlogin', 'accessonlyhisfile', 'notes' ,'id']
         sequence = ['name','surname','...']
 
     def render_exams(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/examinationsListPerDoctor/'+str(record.pk)+'/><span style="color:blue">Εξετάσεις</span></a>')
+        return mark_safe('<a href=/MedMOHApp/examinationsListPerDoctor/'+str(record.pk)+'/><span style="color:blue">Εξετάσεις</span></a>')
 
     def render_detail(self,record):
-        return mark_safe('<a href=/DjgLeoApp001/detail/'+str(record.pk)+'/><span style="color:green">Λεπτομέριες</span></a></a>')
+        return mark_safe('<a href=/MedMOHApp/detail/'+str(record.pk)+'/><span style="color:green">Λεπτομέριες</span></a></a>')
 
 
 @permission_required('People.view', login_url='/login/')
@@ -202,7 +202,7 @@ def doctor_list(request):
                   {'objects': table,
                    'page_title': u'Γιατροί',
                    'form_name': u'Γιατροί' ,
-                   'param_action1': reverse('DjgLeoApp001:create'),
+                   'param_action1': reverse('MedMOHApp:create'),
                    'param_action1_name': 'Προσθήκη'})
 
 
@@ -210,29 +210,87 @@ def doctor_list(request):
 class PatientListTable(tables.Table):
     detail = tables.LinkColumn('item_detail', args=[('pk')],orderable=False,empty_values=[''])
     exam   = tables.LinkColumn('item_exam', args=[('pk')],orderable=False,empty_values=[''])
-    exambio  = tables.LinkColumn('item_exambio', args=[('pk')],orderable=False,empty_values=[''])
     medicine  = tables.LinkColumn('item_medicine', args=[('pk')],orderable=False,empty_values=[''])
-    operation  = tables.LinkColumn('item_operation', args=[('pk')],orderable=False,empty_values=[''])
     class Meta:
         model = People
         row_attrs = {
             'data-id': lambda record: record.pk,
         }
         attrs = {'class': 'paleblue'}
-        exclude = ['dateofbirth', 'nationality', 'countryid', 'ispatient', 'isdoctor', 'canlogin', 'accessonlyhisfile', 'notes' ,'id', 'photo']
+        exclude = ['dateofbirth', 'ispatient', 'isdoctor', 'canlogin', 'accessonlyhisfile', 'notes' ,'id', 'photo']
         sequence = ['name','surname','...']
 
     def render_detail(self,record):
-        return mark_safe('<a href=/DjgLeoApp001/detail/'+str(record.pk)+'/><span style="color:green">Λεπτομέριες</span></a></a>')
+        return mark_safe('<a href=/MedMOHApp/detail/'+str(record.pk)+'/><span style="color:green">Λεπτομέριες</span></a></a>')
 
     def render_exam(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/listexam/'+str(record.pk)+'/><span style="color:blue">Ιατρικές Εξ.</span></a>')
-
-    def render_exambio(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/listexambio/'+str(record.pk)+'/><span style="color:blue">Εργαστηριακές</span></a>')
+        return mark_safe('<a href=/MedMOHApp/listexam/'+str(record.pk)+'/><span style="color:blue">Ιατρικές Εξ.</span></a>')
 
     def render_medicine(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/listmedicine/'+str(record.pk)+'/><span style="color:blue">Φάρμακα</span></a>')
+        return mark_safe('<a href=/MedMOHApp/listmedicine/'+str(record.pk)+'/><span style="color:blue">Φάρμακα</span></a>')
 
-    def render_operation(self, record):
-        return mark_safe('<a href=/DjgLeoApp001/listoperation/'+str(record.pk)+'/><span style="color:blue">Επεμβάσεις</span></a>')
+
+
+
+import django_filters
+
+class PeopleDetailTable(tables.Table):
+    class Meta:
+        model = People
+
+class PeopleDetailFilter(django_filters.FilterSet):
+    class Meta:
+        model = People
+        exclude = ()
+
+class FilteredSingleTableView(tables.SingleTableView):
+    filter_class = None
+
+    def get_table_data(self):
+        data = super(FilteredSingleTableView, self).get_table_data()
+        self.filter = self.filter_class(self.request.GET, queryset=data)
+        return self.filter.qs
+
+    def get_context_data(self, **kwargs):
+        context = super(FilteredSingleTableView, self).get_context_data(**kwargs)
+        context['filter'] = self.filter
+        return context
+
+class BioExaminationDetailFilteredSingleTableView(FilteredSingleTableView):
+    model = People
+    table_class = PeopleDetailTable
+    filter_class = PeopleDetailFilter
+
+
+
+class BioExaminationDetailFilterAll(django_filters.FilterSet):
+    class Meta:
+        model = People
+        exclude = ('id','isdoctor','ispatient','dateofbirth','fax','mail','notes','mobile')
+        # fields = {
+        #     'name'
+        # }
+
+        fields = {'name': ['icontains'],
+                  'surname': ['icontains'],
+                  'companyid':['exact']
+          }
+
+
+
+def BioExaminationDetailFilteredAll(request):
+    data = People.objects.all()
+    filter = BioExaminationDetailFilterAll(request.GET, queryset=data)
+    table = PatientListTable(filter.qs)
+
+    RequestConfig(request, paginate={'per_page': 20}).configure(table)
+    return render(request, 'General/Generic_Table_view_filter_panel.html',
+                  {'objects': table,
+                   'filter' : filter,
+                   'page_title': u'Ανάληση Εργαστηριακών για ',
+                   'form_name':  u'Ανάληση Εργαστηριακών για ',
+                   'param_action1': reverse('MedMOHApp:create'),
+                   'param_action1_name': 'Προσθήκη'})
+
+
+
