@@ -26,7 +26,7 @@ SECRET_KEY = 'n5!n$cl#reb6oyd0zu*tn_ff113&dn4(71-(9cl%r9zt2v2yf5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [u'med-moh.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = [u'medmoh.herokuapp.com','127.0.0.1']
 
 
 # Application definition
