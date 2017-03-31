@@ -42,8 +42,8 @@ class MedicineForm(forms.ModelForm):
         fields = ['peopleid', 'doctorid', 'categorid', 'dateof', 'datestart', 'dateend', 'notes']
         widgets = {
             'dateof': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
-            'datestart': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
-            'dateend': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
+            'datestart': DateWidget(attrs={'id': "id_datestart"}, bootstrap_version=3),
+            'dateend': DateWidget(attrs={'id': "id_dateend"}, bootstrap_version=3),
             'notes': forms.Textarea(attrs={'cols': 100, 'rows': 10})
             }
 

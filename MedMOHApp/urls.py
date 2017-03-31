@@ -25,6 +25,8 @@ urlpatterns = [
     url(r'^deleteexam/(?P<pk>[0-9]+)/$', views.ExaminationDelete.as_view(), name='deleteexam'),
     url(r'^createexam/$', views.ExaminationCreare.as_view(), name='createexam'),
 
+    url(r'^pdfviewexamination/(?P<id>[0-9]+)/$', views.pdf_view_examination, name='pdfviewexamination'),
+
     url(r'^examinationsper/([0-9]+)/$', views.ExaminationsListPer.as_view(), name='examinationsper'),
     url(r'^examinationsper1/([0-9]+)/$', views.examination_list_per, name='examinationspert'),
     url(r'^examinationsListPerDoctor/([0-9]+)/$', views.ExaminationsListPerDoctor.as_view(),name='examinationsListPerDoctor'),
@@ -62,5 +64,13 @@ urlpatterns = [
     url(r'^testff/$', views_test.PeopleFiltered, name='testf'),
     url(r'^Graphos/$', views_test.Graphos, name='Graphos'),
     url(r'^someurl/$', views.someurl, name='someurl'),
+
+
+#    url(r'^pdf_view/$', views.pdf_view, name='pdf_view'),
+    url(r'^pdf_view/(?P<docid>[0-9]+)/$', views.pdf_view, name='pdf_view'),
+
+    url(r'^listdoc/$', views.list, name='listdoc'),
+
+    url(r'^listaaa/$', views.listaaa, name='listdocaaa')
 
 ]

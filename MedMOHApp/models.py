@@ -89,6 +89,7 @@ class People(models.Model):
     companyid = models.ForeignKey(Company, verbose_name=u'Εταιρία')
 
     class Meta:
+        unique_together = (("name", "surname", "companyid"),)
         ordering = ('surname','name')
 
     def __unicode__(self):
@@ -109,11 +110,12 @@ class Examination(models.Model):
     dayoff = models.BooleanField(verbose_name=u'Άδεια')
     dateoffstart = models.DateField(verbose_name=u'Άδεια από', blank=True, null=True)
     dateoffend   = models.DateField(verbose_name=u'Άδεια έως', blank=True, null=True)
-    daysoffgiven = models.IntegerField(verbose_name=u'Ημέρες Άδειας')
+    daysoffgiven = models.IntegerField(verbose_name=u'Ημέρες Άδειας', blank=True, null=True)
     treatment = models.CharField(verbose_name=u'Αγωγή', max_length=8192, blank=True, null=True)
     diagnosis = models.CharField(verbose_name=u'Διάγνωση', max_length=8192, blank=True, null=True)
     notes   = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
     comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
+    docfile = models.FileField(upload_to='examdocuments/%Y/%m/%d', blank=True, null=True)
 
     class Meta:
         ordering = ('-dateofexam',)
@@ -163,8 +165,8 @@ class Medicine(models.Model):
     doctorid  = models.ForeignKey(People,verbose_name=u'Γιατρός', limit_choices_to={'isdoctor': True} , related_name = 'MedicineDoctor')
     categorid = models.ForeignKey(MedicineCategory,verbose_name=u'Κατηγορία')
     dateof    = models.DateField(verbose_name=u'Ημερομηνία')
-    datestart = models.DateField(verbose_name=u'Από')
-    dateend   = models.DateField(verbose_name=u'Έως')
+    datestart = models.DateField(verbose_name=u'Από', blank = True, null = True)
+    dateend   = models.DateField(verbose_name=u'Έως', blank=True, null=True)
     notes     = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
 
     class Meta:
@@ -177,3 +179,8 @@ class Medicine(models.Model):
     def __unicode__(self):
         a=self.dateofexam
         return self.peopleid.surname + ' ' + self.peopleid.name +  ' ' +a.strftime('%d/%m/%Y') + ' + ' + self.notes[:100]
+
+
+
+class ExamDocument(models.Model):
+    docfile = models.FileField(upload_to='documents/%Y/%m/%d')

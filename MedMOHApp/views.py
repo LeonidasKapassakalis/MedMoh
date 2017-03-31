@@ -143,3 +143,50 @@ from django.contrib.auth import user_logged_in
 user_logged_in.connect(my_callback)
 
 ###############################################################################
+
+
+from django import forms
+
+
+class ExamDocumentForm(forms.Form):
+    docfile = forms.FileField(
+        label='Select a file'
+)
+
+
+def list(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = ExamDocumentForm(request.POST, request.FILES)
+        if form.is_valid():
+            newdoc = ExamDocument(docfile=request.FILES['docfile'])
+            newdoc.save()
+
+            # Redirect to the document list after POST
+            return HttpResponseRedirect(reverse('MedMOHApp:listdoc'))
+    else:
+        form = ExamDocumentForm()  # A empty, unbound form
+
+    # Load documents for the list page
+    documents = ExamDocument.objects.all()
+
+    # Render list page with the documents and the form
+    return render(
+        request,
+        'list.html',
+        {'documents': documents, 'form': form}
+)
+
+def pdf_view(request,docid):
+    a=ExamDocument.objects.get(id=docid)
+    b=a.docfile.name.split('/')
+    with open(a.docfile.name , 'rb') as pdf:
+        response = HttpResponse(pdf.read() , content_type ='application/pdf')
+        response['Content-Disposition'] = 'inline;filename='+b[-1]# django-tables2.pdf'
+        return response
+    pdf.closed
+
+
+
+
+###############################################################################

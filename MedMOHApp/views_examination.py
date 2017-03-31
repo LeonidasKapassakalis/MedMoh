@@ -33,6 +33,10 @@ from .views import get_spec_user
 # Examination
 from .models import Examination
 from .models import People
+from django import forms
+from django.forms.widgets import FileInput
+from django.forms.widgets import ClearableFileInput
+
 
 class ExaminationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -42,12 +46,13 @@ class ExaminationForm(forms.ModelForm):
     class Meta:
         model = Examination
         fields = ['peopleid', 'doctorid','examinationcategorid', 'dateofexam',
-                  'treatment', 'diagnosis', 'notes', 'comments',
+                  'treatment', 'diagnosis', 'notes', 'comments','docfile',
                   'dayoff', 'dateoffstart', 'dateoffend','daysoffgiven']
         widgets = {
             'dateofexam': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
             'dateoffstart': DateWidget(attrs={'id': "id_dateofstart"}, bootstrap_version=3),
             'dateoffend': DateWidget(attrs={'id': "id_dateofend"}, bootstrap_version=3),
+            'docfile' :  ClearableFileInput(),
             'diagnosis': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
             'treatment': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
             'notes': forms.Textarea(attrs={'cols': 100, 'rows': 5}),
@@ -71,6 +76,7 @@ class ExaminationForm(forms.ModelForm):
 
 class ExaminationTable(tables.Table):
     detail = tables.LinkColumn('item_detail', args=[('pk')], orderable=False, empty_values=[''])
+    detailpdf = tables.LinkColumn('item_detail', args=[('id')], orderable=False, empty_values=[''])
 
     class Meta:
         model = Examination
@@ -78,12 +84,19 @@ class ExaminationTable(tables.Table):
             'data-id': lambda record: record.pk
         }
         attrs = {'class': 'paleblue'}
-        exclude = ['peopleid', 'comments', 'id']
+        exclude = ['peopleid', 'comments', 'id', 'docfile']
         sequence = ['dateofexam', 'doctorid',  '...']
 
     def render_detail(self, record):
         rev = reverse('MedMOHApp:detailexam', kwargs={'pk': str(record.pk)})
         return mark_safe('<a href=' + rev + u'><span style="color:red">Λεπτομέρειες</span></a>')
+
+    def render_detailpdf(self, record):
+        if len(record.docfile.name) > 0:
+            rev = reverse('MedMOHApp:pdfviewexamination', kwargs={'id': str(record.pk)})
+            return mark_safe('<a href=' + rev + u'><span style="color:cyan">PDF</span></a>')
+        else:
+            return mark_safe('-')
 
 
 def ExaminationList(request, Patient):
@@ -118,6 +131,10 @@ class ExaminationCreare(LoginRequiredMixin, UserPassesTestMixin,CreateView):
     def test_func(self):
         return True
 
+    # def form_valid(self, form):
+    #     Examination(docfile=self.request.FILES['docfile'])
+
+
 class ExaminationDetailView(LoginRequiredMixin, UserPassesTestMixin, ModelFormWidgetMixin, DetailView):
     model = Examination
 
@@ -145,3 +162,46 @@ class ExaminationDelete(LoginRequiredMixin, UserPassesTestMixin, ModelFormWidget
         return True
 
 ########################################################################################################
+
+from django.http import HttpResponse
+
+def pdf_view_examination(request,id):
+    a=Examination.objects.get(id=id)
+    b=a.docfile.name.split('/')
+    with open(a.docfile.name , 'rb') as pdf:
+        response = HttpResponse(pdf.read() , content_type ='application/pdf')
+        response['Content-Disposition'] = 'inline;filename='+b[-1]
+        return response
+    pdf.closed
+
+########################################################################################################
+
+from django.shortcuts import render
+from django.template import RequestContext
+from django.http import HttpResponseRedirect
+from django.core.urlresolvers import reverse
+
+
+def listaaa(request):
+    # Handle file upload
+    if request.method == 'POST':
+        form = ExaminationForm(request.POST, request.FILES)
+#        if form.is_valid():
+        newdoc = Examination(docfile=request.FILES['docfile'])
+        newdoc.save()
+
+            # Redirect to the document list after POST
+        return HttpResponseRedirect(reverse('list'))
+    else:
+        form = ExaminationForm()  # A empty, unbound form
+
+    # Load documents for the list page
+    documents = Examination.objects.all()
+
+    # Render list page with the documents and the form
+    return render(
+        request,
+        'General/General_cu_form.html',
+#        'list.html',
+        {'documents': documents, 'form': form}
+)
