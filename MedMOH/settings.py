@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'datetimewidget',
     'graphos',
     'django_filters',
+    'storages',
+#    'django_dropbox',
     'crispy_forms',
     'django_tables2',
 #    'MedMOHApp',
@@ -146,6 +148,17 @@ USE_L10N = True
 USE_TZ = True
 
 FIXTURE_DIRS = ('/fixtures/',)
+
+#DROPBOX_OAUTH2_TOKEN = '4U4iwiPWg8AAAAAAAAAAIjHaV8vh7CY1JoxvO4iH9e6PhIRFULmz_JYtWz4v4d6Q'
+#DROPBOX_ROOT_PATH = '\medmoh'
+#DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
+
+
+DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+AZURE_ACCOUNT_NAME = 'medmoh'
+AZURE_ACCOUNT_KEY  = 'lFTYkgk8ycEmblywBIMbcXQ3qmWdh08GvcEP/hiAdSiAH8GpWIo5UYGQO3oeHLdPj1vUDRw69/RLx5fUe+X7uA=='
+AZURE_CONTAINER = 'medmohcontainerfile'
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

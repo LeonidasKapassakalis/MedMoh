@@ -1,0 +1,7 @@
+prim acc key
+lFTYkgk8ycEmblywBIMbcXQ3qmWdh08GvcEP/hiAdSiAH8GpWIo5UYGQO3oeHLdPj1vUDRw69/RLx5fUe+X7uA==
+
+conn str
+DefaultEndpointsProtocol=https;AccountName=medmoh;AccountKey=lFTYkgk8ycEmblywBIMbcXQ3qmWdh08GvcEP/hiAdSiAH8GpWIo5UYGQO3oeHLdPj1vUDRw69/RLx5fUe+X7uA==
+
+https://portal.azure.com/#resource/subscriptions/aaed7d26-3f5a-40cc-96b4-e9d237f15eea/resourcegroups/MedStore/providers/Microsoft.ClassicStorage/storageAccounts/medmoh/keys

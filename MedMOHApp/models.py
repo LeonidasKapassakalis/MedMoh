@@ -115,7 +115,7 @@ class Examination(models.Model):
     diagnosis = models.CharField(verbose_name=u'Διάγνωση', max_length=8192, blank=True, null=True)
     notes   = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
     comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
-    docfile = models.FileField(upload_to='examdocuments/%Y/%m/%d', blank=True, null=True)
+    docfile = models.FileField(upload_to='%Y/%m/%d', blank=True, null=True)
 
     class Meta:
         ordering = ('-dateofexam',)

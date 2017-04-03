@@ -11,3 +11,6 @@ dj-database-url
 gunicorn
 whitenoise
 django-graphos==0.3.41
+django-storages
+django-dropbox
+azure
