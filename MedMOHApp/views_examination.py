@@ -169,7 +169,7 @@ from django.core.files.storage import default_storage
 def pdf_view_examination(request,id):
     a=Examination.objects.get(id=id)
     b=a.docfile.name.split('/')
-    with default_storage.open(a.docfile.name , 'rb') as pdf:
+    with default_storage.open(unicode(a.docfile.name) , 'rb') as pdf:
         response = HttpResponse(pdf.read() , content_type ='application/pdf')
         response['Content-Disposition'] = 'inline;filename='+b[-1]
         return response
