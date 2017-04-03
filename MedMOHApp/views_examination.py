@@ -73,6 +73,25 @@ class ExaminationForm(forms.ModelForm):
             else:
                 raise ValidationError((u'Δεν μπορεί να γίνει καταχώρηση για ' + peopleid.name + ' ' +peopleid.surname), code='invalid')
 
+    def clean_docfile(self):
+        docfile = self.cleaned_data['docfile']
+        if not type(docfile) is bool:
+            asc=True
+            try:
+                docfile.name.decode('ascii')
+            except UnicodeEncodeError:
+                print "it was not a ascii-encoded unicode string"
+                asc = False
+            else:
+                print "It may have been an ascii-encoded unicode string"
+                asc = True
+            if ((not(docfile.name.endswith('pdf'))) or (asc == False)):
+                raise ValidationError(u'Μόνο καταχωρηση αρχείων pdf με λατινικους χαρακτήρες', code='invalid')
+            else:
+                return docfile
+        else:
+            return docfile
+
 
 class ExaminationTable(tables.Table):
     detail = tables.LinkColumn('item_detail', args=[('pk')], orderable=False, empty_values=[''])

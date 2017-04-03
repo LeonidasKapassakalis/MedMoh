@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df71897b-3975-4a20-b021-b2af65d47cc3" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MedMOH.iml" afterPath="$PROJECT_DIR$/.idea/MedMOH.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/views_examination.py" afterPath="$PROJECT_DIR$/MedMOHApp/views_examination.py" />
     </list>
@@ -31,11 +33,9 @@
       <file leaf-file-name="models.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MedMOHApp/models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="256">
-              <caret line="117" column="42" selection-start-line="117" selection-start-column="42" selection-end-line="117" selection-end-column="42" />
-              <folding>
-                <element signature="e#25#64#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="324">
+              <caret line="117" column="11" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="11" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -44,8 +44,30 @@
         <entry file="file://$PROJECT_DIR$/MedMOH/settings.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="3128">
-              <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="23" />
-              <folding />
+              <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="1" />
+              <folding>
+                <marker date="1491206374000" expanded="true" signature="0:311" placeholder="&quot;&quot;&quot;Django settings for DjgLeo001 project....&quot;&quot;&quot;" />
+                <marker date="1491206374000" expanded="true" signature="523:726" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="974:1399" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="1416:1863" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="1888:1956" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="2002:2800" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="2008:2797" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="2236:2790" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="2272:2779" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="2850:2978" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="2992:3332" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3010:3118" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3137:3330" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3440:3541" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3571:3964" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3577:3674" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3682:3769" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3777:3865" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3873:3962" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="3967:4043" placeholder="..." />
+                <marker date="1491206374000" expanded="true" signature="4167:4713" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -53,10 +75,10 @@
       <file leaf-file-name="views_examination.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MedMOHApp/views_examination.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="171" column="53" selection-start-line="171" selection-start-column="53" selection-end-line="171" selection-end-column="53" />
+            <state relative-caret-position="102">
+              <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
               <folding>
-                <marker date="1491220380000" expanded="true" signature="3067:3165" placeholder="..." />
+                <element signature="e#24#59#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -65,7 +87,7 @@
       <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MedMOHApp/views.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-187">
+            <state relative-caret-position="119">
               <caret line="7" column="38" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="38" />
               <folding />
             </state>
@@ -129,8 +151,8 @@
     <detection-done>true</detection-done>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="241" />
-    <option name="y" value="96" />
+    <option name="x" value="105" />
+    <option name="y" value="29" />
     <option name="width" value="1400" />
     <option name="height" value="830" />
   </component>
@@ -178,7 +200,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -306,26 +327,9 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MedMoh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MedMoh" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="MedMOH" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="processors" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -613,20 +617,20 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="241" y="96" width="1400" height="830" extended-state="0" />
-    <editor active="false" />
+    <frame x="105" y="29" width="1400" height="830" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39367816" sideWeight="0.49426934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4" sideWeight="0.49426934" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295129" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32288828" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3252149" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34477612" sideWeight="0.5057307" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.34477612" sideWeight="0.5057307" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32833788" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32808024" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -650,7 +654,14 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <breakpoints>
+        <line-breakpoint enabled="true" type="python-line">
+          <url>file://$PROJECT_DIR$/MedMOHApp/views_examination.py</url>
+          <line>76</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -659,9 +670,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
           <caret line="39" column="53" selection-start-line="39" selection-start-column="53" selection-end-line="39" selection-end-column="53" />
-          <folding>
-            <element signature="e#25#64#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -683,9 +692,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2261">
           <caret line="139" column="0" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
-          <folding>
-            <element signature="e#25#64#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -700,7 +707,29 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
+          <folding>
+            <marker date="1491206374000" expanded="true" signature="0:311" placeholder="&quot;&quot;&quot;Django settings for DjgLeo001 project....&quot;&quot;&quot;" />
+            <marker date="1491206374000" expanded="true" signature="523:726" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="974:1399" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="1416:1863" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="1888:1956" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2002:2800" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2008:2797" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2236:2790" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2272:2779" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2850:2978" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2992:3332" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3010:3118" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3137:3330" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3440:3541" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3571:3964" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3577:3674" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3682:3769" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3777:3865" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3873:3962" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3967:4043" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="4167:4713" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -757,9 +786,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1683">
           <caret line="105" column="24" selection-start-line="105" selection-start-column="4" selection-end-line="105" selection-end-column="24" />
-          <folding>
-            <element signature="e#25#64#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -952,13 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://C:/Python27/Lib/site-packages/django/forms/forms.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="291">
-          <caret line="382" column="0" selection-start-line="382" selection-start-column="0" selection-end-line="382" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MedMOH/urls.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="544">
@@ -999,14 +1019,36 @@
     <entry file="file://$PROJECT_DIR$/MedMOH/settings.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3128">
-          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="23" />
-          <folding />
+          <caret line="188" column="0" selection-start-line="188" selection-start-column="0" selection-end-line="188" selection-end-column="1" />
+          <folding>
+            <marker date="1491206374000" expanded="true" signature="0:311" placeholder="&quot;&quot;&quot;Django settings for DjgLeo001 project....&quot;&quot;&quot;" />
+            <marker date="1491206374000" expanded="true" signature="523:726" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="974:1399" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="1416:1863" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="1888:1956" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2002:2800" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2008:2797" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2236:2790" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2272:2779" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2850:2978" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="2992:3332" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3010:3118" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3137:3330" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3440:3541" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3571:3964" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3577:3674" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3682:3769" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3777:3865" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3873:3962" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="3967:4043" placeholder="..." />
+            <marker date="1491206374000" expanded="true" signature="4167:4713" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MedMOHApp/views.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-187">
+        <state relative-caret-position="119">
           <caret line="7" column="38" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="38" />
           <folding />
         </state>
@@ -1014,20 +1056,26 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/MedMOHApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="256">
-          <caret line="117" column="42" selection-start-line="117" selection-start-column="42" selection-end-line="117" selection-end-column="42" />
-          <folding>
-            <element signature="e#25#64#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="324">
+          <caret line="117" column="11" selection-start-line="117" selection-start-column="4" selection-end-line="117" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://C:/Python27/Lib/site-packages/django/forms/forms.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="390" column="0" selection-start-line="390" selection-start-column="0" selection-end-line="390" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/MedMOHApp/views_examination.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="171" column="53" selection-start-line="171" selection-start-column="53" selection-end-line="171" selection-end-column="53" />
+        <state relative-caret-position="102">
+          <caret line="81" column="19" selection-start-line="81" selection-start-column="19" selection-end-line="81" selection-end-column="19" />
           <folding>
-            <marker date="1491220380000" expanded="true" signature="3067:3165" placeholder="..." />
+            <element signature="e#24#59#0" expanded="true" />
           </folding>
         </state>
       </provider>
