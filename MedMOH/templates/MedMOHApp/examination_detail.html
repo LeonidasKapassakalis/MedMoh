@@ -16,9 +16,10 @@
 <h2>Είδος Εξέτασης {{ object.examinationcategorid.name }}</h2>
 <h2>Ασθενής {{ object.peopleid.name }} {{ object.peopleid.surname }}</h2>
 <h2>Γιατρός {{ object.doctorid.name }} {{ object.doctorid.surname }}</h2>
-<textarea cols=100 rows=10 readonly="True">{{ object.notes }}</textarea>
+<textarea cols=100 rows=5 readonly="True">{{ object.diagnosis }}</textarea>
+<textarea cols=100 rows=5 readonly="True">{{ object.treatment }}</textarea>
+<textarea cols=100 rows=5 readonly="True">{{ object.notes }}</textarea>
 <textarea cols=100 rows=5 readonly="True">{{ object.comments }}</textarea>
-
 
 <link rel="stylesheet" type="text/css" href="{% static "/admin/css/BasePlus.css" %}"/>
 <p>

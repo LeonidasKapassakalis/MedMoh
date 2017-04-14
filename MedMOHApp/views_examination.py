@@ -75,7 +75,7 @@ class ExaminationForm(forms.ModelForm):
 
     def clean_docfile(self):
         docfile = self.cleaned_data['docfile']
-        if not type(docfile) is bool:
+        if (not ((type(docfile) is bool) or (docfile is None))):
             asc=True
             try:
                 docfile.name.decode('ascii')
@@ -133,6 +133,67 @@ def ExaminationList(request, Patient):
                     'param_action1_name': 'Προσθήκη'})
 
 
+###################################################################################################
+import django_filters
+
+class ExaminationDetailFilterAll(django_filters.FilterSet):
+    class Meta:
+        model = Examination
+        exclude = ('id',)
+
+        fields = {'peopleid': ['exact'],
+                  'peopleid__name': ['icontains'],
+                  'doctorid': ['exact'],
+                  'dateofexam' : ['gte','lte'],
+                  'examinationcategorid': ['exact'],
+                  'dayoff' : ['exact'],
+          }
+
+class ExaminationTableAll(tables.Table):
+    detail = tables.LinkColumn('item_detail', args=[('pk')], orderable=False, empty_values=[''])
+    detailpdf = tables.LinkColumn('item_detail', args=[('id')], orderable=False, empty_values=[''])
+
+    class Meta:
+        model = Examination
+        row_attrs = {
+            'data-id': lambda record: record.pk
+        }
+        attrs = {'class': 'paleblue'}
+        exclude = ['id','dateoffstart','dateoffend','daysoffgiven','docfile','notes','comments']
+
+        sequence = ['dateofexam', 'peopleid', 'doctorid',  '...']
+
+    def render_detail(self, record):
+        rev = reverse('MedMOHApp:detailexam', kwargs={'pk': str(record.pk)})
+        return mark_safe('<a href=' + rev + u'><span style="color:red">Λεπτομέρειες</span></a>')
+
+    def render_detailpdf(self, record):
+        if len(record.docfile.name) > 0:
+            rev = reverse('MedMOHApp:pdfviewexamination', kwargs={'id': str(record.pk)})
+            return mark_safe('<a href=' + rev + u'><span style="color:cyan">PDF</span></a>')
+        else:
+            return mark_safe('-')
+
+def ExaminationDetailFilteredAll(request):
+    data = Examination.objects.all()
+    filter = ExaminationDetailFilterAll(request.GET, queryset=data)
+    table = ExaminationTableAll(filter.qs)
+
+    RequestConfig(request, paginate={'per_page': 20}).configure(table)
+    return render(request, 'General/Generic_Table_view_filter_panel.html',
+                  {'objects': table,
+                   'filter' : filter,
+                   'page_title': u'Εξετάσεις ',
+                   'form_name':  u'Εξετάσεις ',
+                   'param_action1': reverse('MedMOHApp:create'),
+                   'param_action1_name': 'Προσθήκη'})
+
+
+
+
+###################################################################################################
+
+
 class ExaminationCreare(LoginRequiredMixin, UserPassesTestMixin,CreateView):
     model = Examination
     form_class = ExaminationForm
@@ -185,10 +246,23 @@ class ExaminationDelete(LoginRequiredMixin, UserPassesTestMixin, ModelFormWidget
 from django.http import HttpResponse
 from django.core.files.storage import default_storage
 
+from gdstorage.storage import GoogleDriveStorage
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
+
 def pdf_view_examination(request,id):
     a=Examination.objects.get(id=id)
     b=a.docfile.name.split('/')
-    with default_storage.open(unicode(a.docfile.name) , 'rb') as pdf:
+
+    #Azure
+    # with default_storage.open(unicode(a.docfile.name) , 'rb') as pdf:
+    #     response = HttpResponse(pdf.read() , content_type ='application/pdf')
+    #     response['Content-Disposition'] = 'inline;filename='+b[-1]
+    #     return response
+    # pdf.closed
+
+
+    with gd_storage.open(unicode(a.docfile.name) , 'rb') as pdf:
         response = HttpResponse(pdf.read() , content_type ='application/pdf')
         response['Content-Disposition'] = 'inline;filename='+b[-1]
         return response

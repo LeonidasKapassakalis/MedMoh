@@ -39,14 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'whitenoise.runserver_nostatic',    
     'django.contrib.staticfiles',
+
+#    'storages', #Azure
+    'gdstorage',
+
     'datetimewidget',
     'graphos',
     'django_filters',
-    'storages',
+
 #    'django_dropbox',
     'crispy_forms',
     'django_tables2',
-#    'MedMOHApp',
     'MedMOHApp.apps.MedMOHAppConfig',
 
 ]
@@ -154,11 +157,20 @@ FIXTURE_DIRS = ('/fixtures/',)
 #DEFAULT_FILE_STORAGE = 'storages.backends.dropbox.DropBoxStorage'
 
 
-DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
-AZURE_ACCOUNT_NAME = 'medmoh'
-AZURE_ACCOUNT_KEY  = 'lFTYkgk8ycEmblywBIMbcXQ3qmWdh08GvcEP/hiAdSiAH8GpWIo5UYGQO3oeHLdPj1vUDRw69/RLx5fUe+X7uA=='
-AZURE_CONTAINER = 'medmohcontainerfile'
+#
+# Azure Storage Settings
+#
+#DEFAULT_FILE_STORAGE = 'storages.backends.azure_storage.AzureStorage'
+#AZURE_ACCOUNT_NAME = 'medmoh'
+#AZURE_ACCOUNT_KEY  = 'lFTYkgk8ycEmblywBIMbcXQ3qmWdh08GvcEP/hiAdSiAH8GpWIo5UYGQO3oeHLdPj1vUDRw69/RLx5fUe+X7uA=='
+#AZURE_CONTAINER = 'medmohcontainerfile'
 
+
+#
+# Google Drive Storage Settings
+#
+
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = '/My Project-979e93c485b0.json'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/

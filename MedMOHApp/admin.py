@@ -10,14 +10,10 @@ from django.contrib import admin
 #     ordering = ('date','peopleid',)
 # admin.site.register(Dates,DatesAdmin)
 
-from .models import Country
-admin.site.register(Country)
-
 from .models import ExaminationCategory
 admin.site.register(ExaminationCategory)
 
 from .models import People
-
 class PeopleAdmin(admin.ModelAdmin):
     list_display = ('surname', 'name', 'mail')
     search_fields = ('surname', 'name')
@@ -35,12 +31,6 @@ class ExaminationAdmin(admin.ModelAdmin):
     search_fields = ('dateofexam',)
     list_filter = ('dateofexam',)
 admin.site.register(Examination,ExaminationAdmin)
-
-
-
-from .models import Locations
-admin.site.register(Locations)
-
 
 from .models import MedicineCategory
 admin.site.register(MedicineCategory)

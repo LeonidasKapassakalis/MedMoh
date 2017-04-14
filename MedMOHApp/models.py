@@ -8,6 +8,12 @@ from django_datatables_view.base_datatable_view import BaseDatatableView
 
 from django.core.urlresolvers import reverse
 
+
+from gdstorage.storage import GoogleDriveStorage
+
+# Define Google Drive Storage
+gd_storage = GoogleDriveStorage()
+
 class Company(models.Model):
     id = models.AutoField
     name = models.CharField(u'Εταιρία', max_length=50, unique=True)
@@ -34,46 +40,6 @@ class ExaminationCategory(models.Model):
     def get_absolute_url(self):
         return reverse('MedMOHApp:listexaminationcategory')
 
-class Country(models.Model):
-    id = models.AutoField
-    name = models.CharField(u'Χώρα', max_length=50, unique=True)
-    abbr = models.CharField(u'Χώρα(2)', max_length=10, unique=True)
-    telephoneext = models.CharField(u'Τηλ', max_length=4) 
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name',)
-
-    def get_absolute_url(self):
-        return reverse('MedMOHApp:listcountry')
-
-class Locations(models.Model):
-    id = models.AutoField
-    name = models.CharField(u'Οναμασία',unique=True, max_length=50)
-    address = models.CharField(u'Διεύθυνση', max_length=200, blank=True, null=True)
-    phone = models.CharField(u'Τηλέφωνα', max_length=60, blank=True, null=True)
-    mail = models.CharField(u'Email', max_length=50, blank=True, null=True)
-    tk = models.CharField(u'TK', max_length=5, blank=True, null=True)
-    text = models.TextField(u'Σχόλια', blank=True, null=True)
-    hospital = models.NullBooleanField(u'Νοσοκομείο')
-    medicalcenter = models.NullBooleanField(u'Ιατρικό Κέντρο')
-    eopyy = models.NullBooleanField(u'ΕΟΠΠΥ')
-    contact = models.TextField(u'Σύνδεσμος', blank=True, null=True)
-    countryid = models.ForeignKey(Country, verbose_name=u'Χώρα')
-    peoples = models.ManyToManyField('People', verbose_name=u'Ατομα', blank=True, null=True ) #TODO Delete null
-
-    def __unicode__(self):
-        return self.name
-
-    class Meta:
-        ordering = ('name',)
-
-    def get_absolute_url(self):
-        return reverse('MedMOHApp:listlocation')
-
-
 class People(models.Model):
     id = models.AutoField
     name = models.CharField(u'Όνομα',max_length=30)
@@ -87,6 +53,8 @@ class People(models.Model):
     isdoctor = models.NullBooleanField(u'Γιατρός',db_column='IsDoctor')   
     notes = models.CharField(verbose_name=u'Σημειώσεις', max_length=8192, blank=True, null=True)
     companyid = models.ForeignKey(Company, verbose_name=u'Εταιρία')
+    amka = models.CharField(verbose_name=u'ΑΜΚΑ', max_length=8, blank=True, null=True)
+
 
     class Meta:
         unique_together = (("name", "surname", "companyid"),)
@@ -115,7 +83,8 @@ class Examination(models.Model):
     diagnosis = models.CharField(verbose_name=u'Διάγνωση', max_length=8192, blank=True, null=True)
     notes   = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
     comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
-    docfile = models.FileField(upload_to='%Y/%m/%d', blank=True, null=True)
+#    docfile = models.FileField(upload_to='%Y/%m/%d', blank=True, null=True)
+    docfile = models.FileField(upload_to='%Y/%m/%d', blank=True, null=True, storage=gd_storage)
 
     class Meta:
         ordering = ('-dateofexam',)

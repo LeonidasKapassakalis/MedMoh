@@ -104,7 +104,6 @@ def get_spec_user(request):
     return (request.user.is_superuser,p1.isdoctor,p2.isdoctor,us.peopleid_id, us.altpeopleid_id,pp,dd, p_object, d_object)
 
 
-from views_location import *
 from views_examination import *
 from views_medicine import *
 from views_people import *

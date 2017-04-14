@@ -41,7 +41,7 @@ class PeopleForm(forms.ModelForm):
 
     class Meta:
         model = People
-        fields = ['name', 'surname', 'dateofbirth', 'phone', 'mobile', 'mail' ,'companyid'
+        fields = ['name', 'surname', 'dateofbirth', 'phone', 'mobile', 'mail' , 'amka' ,'companyid'
                   ,'ispatient','isdoctor','notes']
         widgets = {
             'dateofbirth': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
@@ -230,7 +230,7 @@ class PatientListTable(tables.Table):
         return mark_safe('<a href=/MedMOHApp/listmedicine/'+str(record.pk)+'/><span style="color:blue">Φάρμακα</span></a>')
 
 
-
+####################################################################################################
 
 import django_filters
 
@@ -273,6 +273,7 @@ class BioExaminationDetailFilterAll(django_filters.FilterSet):
 
         fields = {'name': ['icontains'],
                   'surname': ['icontains'],
+                  'amka': ['exact'],
                   'companyid':['exact']
           }
 

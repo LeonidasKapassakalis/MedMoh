@@ -19,6 +19,8 @@ urlpatterns = [
     url(r'^listp/', views.patient_list, name='patient_list'),
 
 #Exams
+    url(r'^listexaminations/$', views.ExaminationDetailFilteredAll, name='listexaminations'),
+    url(r'^listexaminationsf/$', views.ExaminationDetailFilteredAll, name='listexaminationsf'),
     url(r'^listexam/(?P<Patient>[0-9]+)/$', views.ExaminationList, name='listexam'),
     url(r'^detailexam/(?P<pk>[0-9]+)/$', views.ExaminationDetailView.as_view(), name='detailexam'),
     url(r'^updateexam/(?P<pk>[0-9]+)/$', views.ExaminationUpdate.as_view(), name='updateexam'),
@@ -38,14 +40,6 @@ urlpatterns = [
     url(r'^updatemedicine/(?P<pk>[0-9]+)/$', views.MedicineUpdate.as_view(), name='updatemedicine'),
     url(r'^deletemedicine/(?P<pk>[0-9]+)/$', views.MedicineDelete.as_view(), name='deletemedicine'),
     url(r'^createmedicine/$', views.MedicineCreare.as_view(), name='createmedicine'),
-
-#Location
-    url(r'^listlocation/$', views.LocationList, name='listlocation'),
-    url(r'^detaillocation/(?P<pk>[0-9]+)/$', views.LocationDetailView.as_view(), name='detaillocation'),
-    url(r'^updatelocation/(?P<pk>[0-9]+)/$', views.LocationUpdate.as_view(), name='updatelocation'),
-    url(r'^deletelocation/(?P<pk>[0-9]+)/$', views.LocationDelete.as_view(), name='deletelocation'),
-    url(r'^createlocation/$', views.LocationCreare.as_view(), name='createlocation'),
-
 
 #medicinecategory
     url(r'^listmedicinecategory/$', views.MedicineCategoryList, name='listmedicinecategory'),
