@@ -170,7 +170,7 @@ FIXTURE_DIRS = ('/fixtures/',)
 # Google Drive Storage Settings
 #
 
-GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = '/static/My Project-979e93c485b0.json'
+GOOGLE_DRIVE_STORAGE_JSON_KEY_FILE = 'My Project-979e93c485b0.json'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
