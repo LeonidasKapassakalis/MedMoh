@@ -2,22 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="df71897b-3975-4a20-b021-b2af65d47cc3" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MedMOHApp/migrations/0009_people_amka.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/MedMOHApp/migrations/0010_auto_20170405_0924.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/MedMOHApp/views_location.py" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/MedMOH.iml" afterPath="$PROJECT_DIR$/.idea/MedMOH.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOH/settings.py" afterPath="$PROJECT_DIR$/MedMOH/settings.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOH/templates/MedMOHApp/examination_detail.html" afterPath="$PROJECT_DIR$/MedMOH/templates/MedMOHApp/examination_detail.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOH/templates/NewMenuBootStrap.html" afterPath="$PROJECT_DIR$/MedMOH/templates/NewMenuBootStrap.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/admin.py" afterPath="$PROJECT_DIR$/MedMOHApp/admin.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/models.py" afterPath="$PROJECT_DIR$/MedMOHApp/models.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/urls.py" afterPath="$PROJECT_DIR$/MedMOHApp/urls.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/views.py" afterPath="$PROJECT_DIR$/MedMOHApp/views.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/views_examination.py" afterPath="$PROJECT_DIR$/MedMOHApp/views_examination.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/views_param.py" afterPath="$PROJECT_DIR$/MedMOHApp/views_param.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MedMOHApp/views_people.py" afterPath="$PROJECT_DIR$/MedMOHApp/views_people.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
     </list>
     <ignored path="MedMoh.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -45,14 +31,9 @@
       <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/MedMOH/settings.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2924">
+            <state relative-caret-position="2557">
               <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
-              <folding>
-                <marker date="1491988666000" expanded="true" signature="0:311" placeholder="&quot;&quot;&quot;Django settings for DjgLeo001 project....&quot;&quot;&quot;" />
-                <marker date="1491988666000" expanded="true" signature="523:726" placeholder="..." />
-                <marker date="1491988666000" expanded="true" signature="974:1202" placeholder="..." />
-                <marker date="1491988666000" expanded="true" signature="4762:4863" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -62,53 +43,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="161">
               <caret line="276" column="0" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-              <folding>
-                <marker date="1491989054000" expanded="false" signature="24:831" placeholder="import ..." />
-                <marker date="1491989054000" expanded="true" signature="833:1214" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="1435:3776" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="1476:1589" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="1606:2496" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="1653:1860" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="1881:2495" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="2527:3027" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="2625:2715" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="2797:3027" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="3057:3776" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="3169:3735" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="3291:3385" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="3403:3503" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="3816:4814" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="4030:4290" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="4080:4137" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="4328:4502" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="4543:4814" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="4584:4766" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="4855:5587" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="5289:5585" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="5772:6129" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="5788:6129" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="5862:6128" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="6171:7219" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="6385:6695" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="6435:6492" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="6733:6907" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="6948:7219" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="6989:7171" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="7263:7848" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="7578:7846" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8031:8642" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8188:8345" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8373:8500" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8526:8642" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8552:8642" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8748:8818" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="8895:9254" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="9052:9208" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="9234:9254" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="9356:9426" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="9406:9426" placeholder="..." />
-                <marker date="1491989054000" expanded="true" signature="9777:10373" placeholder="..." />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -162,7 +97,6 @@
         <option value="$PROJECT_DIR$/MedMOH/templates/list.html" />
         <option value="$PROJECT_DIR$/MedMOHApp/views_medicine.py" />
         <option value="$PROJECT_DIR$/MedMOH/templates/General/General_cu_form.html" />
-        <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/MedMOHApp/views_people.py" />
         <option value="$PROJECT_DIR$/MedMOHApp/admin.py" />
         <option value="$PROJECT_DIR$/MedMOHApp/views.py" />
@@ -173,6 +107,7 @@
         <option value="$PROJECT_DIR$/MedMOHApp/models.py" />
         <option value="$PROJECT_DIR$/MedMOH/settings.py" />
         <option value="$PROJECT_DIR$/MedMOHApp/views_examination.py" />
+        <option value="$PROJECT_DIR$/requirements.txt" />
       </list>
     </option>
   </component>
@@ -569,9 +504,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="105" y="29" width="1400" height="830" extended-state="1" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4119403" sideWeight="0.49426934" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4119403" sideWeight="0.49426934" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -638,12 +573,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <marker date="1491988666000" expanded="true" signature="0:311" placeholder="&quot;&quot;&quot;Django settings for DjgLeo001 project....&quot;&quot;&quot;" />
-            <marker date="1491988666000" expanded="true" signature="523:726" placeholder="..." />
-            <marker date="1491988666000" expanded="true" signature="974:1202" placeholder="..." />
-            <marker date="1491988666000" expanded="true" signature="4762:4863" placeholder="..." />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -860,13 +790,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/requirements.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MedMOH/templates/list.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -960,19 +883,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/MedMOH/settings.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2924">
-          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
-          <folding>
-            <marker date="1491988666000" expanded="true" signature="0:311" placeholder="&quot;&quot;&quot;Django settings for DjgLeo001 project....&quot;&quot;&quot;" />
-            <marker date="1491988666000" expanded="true" signature="523:726" placeholder="..." />
-            <marker date="1491988666000" expanded="true" signature="974:1202" placeholder="..." />
-            <marker date="1491988666000" expanded="true" signature="4762:4863" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/MedMOHApp/models.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -987,53 +897,23 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="161">
           <caret line="276" column="0" selection-start-line="276" selection-start-column="0" selection-end-line="276" selection-end-column="0" />
-          <folding>
-            <marker date="1491989054000" expanded="false" signature="24:831" placeholder="import ..." />
-            <marker date="1491989054000" expanded="true" signature="833:1214" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="1435:3776" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="1476:1589" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="1606:2496" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="1653:1860" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="1881:2495" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="2527:3027" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="2625:2715" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="2797:3027" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="3057:3776" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="3169:3735" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="3291:3385" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="3403:3503" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="3816:4814" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="4030:4290" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="4080:4137" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="4328:4502" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="4543:4814" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="4584:4766" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="4855:5587" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="5289:5585" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="5772:6129" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="5788:6129" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="5862:6128" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="6171:7219" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="6385:6695" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="6435:6492" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="6733:6907" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="6948:7219" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="6989:7171" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="7263:7848" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="7578:7846" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8031:8642" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8188:8345" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8373:8500" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8526:8642" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8552:8642" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8748:8818" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="8895:9254" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="9052:9208" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="9234:9254" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="9356:9426" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="9406:9426" placeholder="..." />
-            <marker date="1491989054000" expanded="true" signature="9777:10373" placeholder="..." />
-          </folding>
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/MedMOH/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2557">
+          <caret line="185" column="0" selection-start-line="185" selection-start-column="0" selection-end-line="185" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="26" selection-start-line="16" selection-start-column="26" selection-end-line="16" selection-end-column="26" />
+          <folding />
         </state>
       </provider>
     </entry>

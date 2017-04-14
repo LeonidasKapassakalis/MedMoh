@@ -14,3 +14,4 @@ django-graphos==0.3.41
 django-storages
 django-dropbox
 azure
+django-googledrive-storage
