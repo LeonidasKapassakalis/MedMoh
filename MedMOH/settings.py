@@ -32,6 +32,12 @@ ALLOWED_HOSTS = [u'medmoh.herokuapp.com','127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    # Autocomplete
+    'dal',
+    # Enable plugins
+    'dal_select2',
+    #'dal_queryset_sequence',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,6 +49,9 @@ INSTALLED_APPS = [
 #    'storages', #Azure
     'gdstorage',
 
+# addanother
+    'django_addanother',
+
     'datetimewidget',
     'graphos',
     'django_filters',
@@ -50,6 +59,7 @@ INSTALLED_APPS = [
 #    'django_dropbox',
     'crispy_forms',
     'django_tables2',
+
     'MedMOHApp.apps.MedMOHAppConfig',
 
 ]
@@ -63,11 +73,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
 ]
 
-MIDDLEWARE_CLASSES = [
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    ]
+# MIDDLEWARE_CLASSES = [
+#     'django.contrib.auth.middleware.AuthenticationMiddleware',
+#     ]
 
 ROOT_URLCONF = 'MedMOH.urls'
 

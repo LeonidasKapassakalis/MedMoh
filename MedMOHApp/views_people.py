@@ -25,16 +25,27 @@ from django.core.exceptions import ValidationError
 from .views import ModelFormWidgetMixin
 from .views import get_spec_user
 
+
+from django.core.urlresolvers import reverse_lazy
+from django_addanother.widgets import AddAnotherWidgetWrapper
+from django_addanother.widgets import AddAnotherEditSelectedWidgetWrapper
+
+
 ########################################################################################################
 
 #['name','surname','dateofbirth','nationality','countryid','phone','fax','mobile','mail'\
 #    ,'ispatient','isdoctor','canlogin','accessonlyhisfile','notes','photo']
 
 
-
 from .models import People
 
+from dal import autocomplete
+
+from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.db.models.fields.reverse_related import ManyToOneRel
+
 class PeopleForm(forms.ModelForm):
+
     def __init__(self, *args, **kwargs):
         self.request = kwargs.pop('request', None)
         super(self.__class__ , self).__init__(*args, **kwargs)
@@ -44,6 +55,7 @@ class PeopleForm(forms.ModelForm):
         fields = ['name', 'surname', 'dateofbirth', 'phone', 'mobile', 'mail' , 'amka' ,'companyid'
                   ,'ispatient','isdoctor','notes']
         widgets = {
+            'companyid': autocomplete.ModelSelect2(url='MedMOHApp:select2_fk'),
             'dateofbirth': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
             'notes': forms.Textarea(attrs={'cols': 100, 'rows': 5})
             }

@@ -5,6 +5,11 @@ from . import views
 
 from . import views_test
 
+from models import Company
+from dal import autocomplete
+
+
+
 app_name = 'MedMOHApp'
 urlpatterns = [
     url(r'^$', views.index, name='index'),
@@ -49,7 +54,10 @@ urlpatterns = [
 
 #examinationcategory
     url(r'^listexaminationcategory/$', views.ExaminationCategoryList, name='listexaminationcategory'),
-    url(r'^updateexaminationcategory/(?P<pk>[0-9]+)/$', views.ExaminationCategoryUpdate.as_view(), name='updateexaminationcategory'),
+#Change for django_addanother
+#    url(r'^updateexaminationcategory/(?P<pk>[0-9]+)/$', views.ExaminationCategoryUpdate.as_view(), name='updateexaminationcategory'),
+    url(r'^updateexaminationcategory/(?P<pk>.*)/$', views.ExaminationCategoryUpdate.as_view(), name='updateexaminationcategory'),
+#Change for django_addanother
     url(r'^createexaminationcategory/$', views.ExaminationCategoryCreate.as_view(), name='createexaminationcategory'),
 
 
@@ -65,6 +73,9 @@ urlpatterns = [
 
     url(r'^listdoc/$', views.list, name='listdoc'),
 
-    url(r'^listaaa/$', views.listaaa, name='listdocaaa')
+    url(r'^listaaa/$', views.listaaa, name='listdocaaa'),
+
+
+    url('^test-autocomplete/$', autocomplete.Select2QuerySetView.as_view(model=Company,create_field='name'), name='select2_fk',),
 
 ]

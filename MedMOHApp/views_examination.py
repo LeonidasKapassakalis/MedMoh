@@ -37,6 +37,12 @@ from django import forms
 from django.forms.widgets import FileInput
 from django.forms.widgets import ClearableFileInput
 
+from django.core.urlresolvers import reverse_lazy
+from django_addanother.widgets import AddAnotherWidgetWrapper
+from django_addanother.widgets import AddAnotherEditSelectedWidgetWrapper
+
+
+
 
 class ExaminationForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -49,6 +55,11 @@ class ExaminationForm(forms.ModelForm):
                   'treatment', 'diagnosis', 'notes', 'comments','docfile',
                   'dayoff', 'dateoffstart', 'dateoffend','daysoffgiven']
         widgets = {
+#            'examinationcategorid': AddAnotherWidgetWrapper(
+            'examinationcategorid': AddAnotherEditSelectedWidgetWrapper(
+                forms.Select,
+                reverse_lazy('MedMOHApp:createexaminationcategory'),
+                reverse_lazy('MedMOHApp:updateexaminationcategory', args=('__fk__',))),
             'dateofexam': DateWidget(attrs={'id': "id_dateof"}, bootstrap_version=3),
             'dateoffstart': DateWidget(attrs={'id': "id_dateofstart"}, bootstrap_version=3),
             'dateoffend': DateWidget(attrs={'id': "id_dateofend"}, bootstrap_version=3),
@@ -103,7 +114,7 @@ class ExaminationTable(tables.Table):
             'data-id': lambda record: record.pk
         }
         attrs = {'class': 'paleblue'}
-        exclude = ['peopleid', 'comments', 'id', 'docfile']
+        exclude = ['peopleid', 'comments', 'id' ,'docfile']
         sequence = ['dateofexam', 'doctorid',  '...']
 
     def render_detail(self, record):
@@ -261,7 +272,7 @@ def pdf_view_examination(request,id):
     #     return response
     # pdf.closed
 
-
+    #GDrive
     with gd_storage.open(unicode(a.docfile.name) , 'rb') as pdf:
         response = HttpResponse(pdf.read() , content_type ='application/pdf')
         response['Content-Disposition'] = 'inline;filename='+b[-1]

@@ -23,6 +23,12 @@ from django.core.exceptions import ValidationError
 
 from .views import ModelFormWidgetMixin
 
+
+#addanother
+from django_addanother.views import UpdatePopupMixin
+from django_addanother.views import CreatePopupMixin
+
+
 ########################################################################################################
 from .models import MedicineCategory
 
@@ -65,7 +71,7 @@ def MedicineCategoryList(request):
                     'param_action1': reverse('MedMOHApp:createmedicinecategory'),
                     'param_action1_name': 'Προσθήκη'})
 
-class MedicineCategoryCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+class MedicineCategoryCreate(CreatePopupMixin, LoginRequiredMixin, UserPassesTestMixin, CreateView):
     model = MedicineCategory
     form_class = MedicineCategoryForm
     template_name = 'General/General_cu_form.html'
@@ -73,7 +79,7 @@ class MedicineCategoryCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView
     def test_func(self):
         return True
 
-class MedicineCategoryUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+class MedicineCategoryUpdate(UpdatePopupMixin, LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = MedicineCategory
     form_class = MedicineCategoryForm
     template_name = 'General/General_cu_form.html'

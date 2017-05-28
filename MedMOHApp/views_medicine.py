@@ -103,7 +103,11 @@ class MedicineCreare(LoginRequiredMixin, UserPassesTestMixin, CreateView):
     def test_func(self):
         return True
 
-class MedicineUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+
+from django_addanother.views import UpdatePopupMixin
+from django_addanother.views import CreatePopupMixin
+
+class MedicineUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView, UpdatePopupMixin ):
     model = Medicine
     form_class = MedicineForm
     template_name = 'General/General_cu_form.html'

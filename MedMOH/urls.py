@@ -22,11 +22,18 @@ from MedMOHApp import forms
 #from django.contrib import admin
 from django.contrib.auth import views as auth_views
 
+
 urlpatterns = [
 
     url(r'^menu/', views.NewMenu),
     url(r'^menu1/', views.NewMenu1),
+
+
     url(r'^MedMOHApp/', include('MedMOHApp.urls')),
+    url(r'^django_popup_view_field/', include('django_popup_view_field.urls')),
+
+
+
     url(r'^admin/', admin.site.urls),
     url(r'^login/$', views.login, name='login'),
     url(r'^logout/$', views.logout, name='logout'),
@@ -39,4 +46,5 @@ urlpatterns = [
     url(r'^reset/done/$', views.password_reset_complete, name='password_reset_complete'),
     url(r'^admin/', admin.site.urls),
     url(r'', views.MainMenu, name='MainMenu'),
+
 ]
