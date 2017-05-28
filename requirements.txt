@@ -17,3 +17,4 @@ azure
 django-googledrive-storage
 django-autocomplete-light
 django_addanother
+django_popup_view_field
