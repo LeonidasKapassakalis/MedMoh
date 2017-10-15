@@ -84,7 +84,7 @@ class Examination(models.Model):
     notes   = models.CharField(verbose_name=u'Σημειώσεις',max_length=8192, blank=True, null=True)
     comments = models.CharField(verbose_name=u'Σχόλια',max_length=8192, blank=True, null=True)
 #    docfile = models.FileField(upload_to='%Y/%m/%d', blank=True, null=True)
-    docfile = models.FileField(upload_to='%Y\%m\%d', blank=True, null=True, storage=gd_storage)
+    docfile = models.FileField(upload_to='%Y/%m/%d', blank=True, null=True, storage=gd_storage)
 
     class Meta:
         ordering = ('-dateofexam',)
